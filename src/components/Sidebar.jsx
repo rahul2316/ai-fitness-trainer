@@ -58,6 +58,16 @@ export default function Sidebar() {
             <span>AI Trainer</span>
           </NavLink>
 
+          <NavLink to="/training-plan" className={linkClass}>
+            <Zap className="w-5 h-5" />
+            <span>Training Plan</span>
+            {userProfile?.subscriptionTier === "advanced" && (
+              <span className="ml-auto px-2 py-0.5 bg-accent/20 text-accent text-[8px] font-black uppercase tracking-wider rounded-full border border-accent/30">
+                Advanced
+              </span>
+            )}
+          </NavLink>
+
           <NavLink to="/settings" className={linkClass}>
             <Settings className="w-5 h-5" />
             <span>Settings</span>

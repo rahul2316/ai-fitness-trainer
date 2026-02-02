@@ -22,6 +22,7 @@ export function FitnessProvider({ children }) {
     const [neuralXP, setNeuralXP] = useState(0);
     const [streak, setStreak] = useState(0);
     const [hydration, setHydration] = useState(0);
+    const [trainingPlan, setTrainingPlan] = useState(null);
     const [loadingData, setLoadingData] = useState(true);
 
     // Initial Defaults (if new user)
@@ -62,6 +63,7 @@ export function FitnessProvider({ children }) {
                 setNeuralXP(data.profile?.neuralXP || 0);
                 setStreak(data.profile?.streak || 0);
                 setHydration(data.profile?.hydration || 0);
+                setTrainingPlan(data.trainingPlan || null);
             } else {
                 setDoc(userRef, {
                     profile: { ...defaultProfile, name: user.email?.split("@")[0] || "User" },
@@ -235,6 +237,55 @@ export function FitnessProvider({ children }) {
         }
     };
 
+    // Training Plan Functions
+    const updateTrainingPlan = async (newPlan) => {
+        if (!user) return;
+        try {
+            const userRef = doc(db, "users", user.uid);
+            await setDoc(userRef, { trainingPlan: newPlan }, { merge: true });
+        } catch (err) {
+            console.error("Error updating training plan:", err);
+        }
+    };
+
+    const updateDailyTask = async (weekNumber, dayOfWeek, taskType, taskIndex) => {
+        if (!user || !trainingPlan) return;
+        try {
+            const updatedPlan = { ...trainingPlan };
+            const week = updatedPlan.weeks[weekNumber - 1];
+            const day = week.days.find(d => d.dayOfWeek === dayOfWeek);
+
+            if (!day) return;
+
+            if (taskType === 'workout') {
+                day.workoutCompleted = !day.workoutCompleted;
+            } else if (taskType === 'meal' && taskIndex !== undefined) {
+                day.meals[taskIndex].completed = !day.meals[taskIndex].completed;
+            } else if (taskType === 'hydration') {
+                day.hydrationCompleted = !day.hydrationCompleted;
+            } else if (taskType === 'sleep') {
+                day.sleepCompleted = !day.sleepCompleted;
+            }
+
+            await updateTrainingPlan(updatedPlan);
+
+            // Award XP for task completion
+            if (day.workoutCompleted || day.hydrationCompleted || day.sleepCompleted) {
+                const newXP = (userProfile?.neuralXP || 0) + 10;
+                await updateUserProfile({ neuralXP: newXP });
+            }
+        } catch (err) {
+            console.error("Error updating daily task:", err);
+        }
+    };
+
+    const getTodayTasks = () => {
+        if (!trainingPlan) return null;
+        const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+        const currentWeek = trainingPlan.weeks[trainingPlan.currentWeek - 1];
+        return currentWeek?.days?.find(d => d.dayOfWeek === today) || null;
+    };
+
     const value = {
         userProfile,
         dietPlan,
@@ -245,6 +296,7 @@ export function FitnessProvider({ children }) {
         neuralXP,
         streak,
         hydration,
+        trainingPlan,
         loadingData,
         updateUserProfile,
         updateDietPlan,
@@ -253,6 +305,9 @@ export function FitnessProvider({ children }) {
         addWeightEntry,
         completeWorkout,
         updateHydration,
+        updateTrainingPlan,
+        updateDailyTask,
+        getTodayTasks,
         resetData
     };
 

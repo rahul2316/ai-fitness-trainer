@@ -2,23 +2,29 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import WorkoutCard from "../components/WorkoutCard";
 import AddWorkoutModal from "../components/AddWorkoutModal";
 import WorkoutProtocolModal from "../components/WorkoutProtocolModal";
+import PlanGenerationModal from "../components/PlanGenerationModal";
 import { useState } from "react";
 import { generateWorkoutRoutine } from "../services/ai";
+import { generateComprehensivePlan } from "../services/trainingPlanGenerator";
 import { useFitness } from "../context/FitnessContext";
 import { Plus, Sparkles, Clock, Layers, Activity, Dumbbell, Zap, ChevronLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import { useToast } from "../components/Toast";
 import { motion } from "framer-motion";
 
 export default function Workouts() {
-  const { workoutRoutine, updateWorkoutRoutine, userProfile } = useFitness();
+  const { workoutRoutine, updateWorkoutRoutine, userProfile, updateTrainingPlan } = useFitness();
   const { addToast } = useToast();
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [showPlanModal, setShowPlanModal] = useState(false);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [generatingPlan, setGeneratingPlan] = useState(false);
 
   const isPro = userProfile?.subscriptionTier && userProfile.subscriptionTier !== "free";
+  const isAdvanced = userProfile?.subscriptionTier === "advanced";
 
   // Preferences
   const [type, setType] = useState("Full Body");
@@ -45,6 +51,33 @@ export default function Workouts() {
       addToast("Failed to save workout", "error");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleGenerateTrainingPlan = async (preferences) => {
+    if (!isAdvanced) {
+      addToast("ADVANCED PLAN REQUIRED", "error");
+      return;
+    }
+
+    try {
+      setGeneratingPlan(true);
+      addToast("Generating your personalized training plan...", "info");
+
+      const plan = await generateComprehensivePlan(userProfile, preferences);
+
+      if (plan) {
+        await updateTrainingPlan(plan);
+        addToast("Training plan generated successfully!", "success");
+        navigate("/training-plan");
+      } else {
+        addToast("Failed to generate training plan", "error");
+      }
+    } catch (err) {
+      console.error("Plan generation error:", err);
+      addToast("Failed to generate training plan", "error");
+    } finally {
+      setGeneratingPlan(false);
     }
   };
 
@@ -116,6 +149,21 @@ export default function Workouts() {
                 )}
                 {isPro ? "Generate Workout" : "Upgrade to Unlock"}
               </button>
+
+              {isAdvanced && (
+                <button
+                  onClick={() => setShowPlanModal(true)}
+                  disabled={generatingPlan}
+                  className="bg-accent text-black hover:bg-accent/90 px-8 py-4 rounded-[1.5rem] text-[10px] font-black uppercase tracking-[0.2em] shadow-lg shadow-accent/20 transition-all flex items-center gap-3"
+                >
+                  {generatingPlan ? (
+                    <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                  ) : (
+                    <Zap className="w-4 h-4" />
+                  )}
+                  Full Training Plan
+                </button>
+              )}
             </div>
           </div>
 

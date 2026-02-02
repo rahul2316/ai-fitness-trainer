@@ -15,6 +15,7 @@ import AICoach from "./pages/AICoach";
 import Plans from "./pages/Plans";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
+import TrainingPlan from "./pages/TrainingPlan";
 
 import { ToastProvider } from "./components/Toast";
 
@@ -75,6 +76,14 @@ function AnimatedRoutes() {
           element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/training-plan"
+          element={
+            <ProtectedRoute>
+              <TrainingPlan />
             </ProtectedRoute>
           }
         />

@@ -4,13 +4,31 @@ import WeightChart from "../components/charts/WeightChart";
 import CaloriesChart from "../components/charts/CaloriesChart";
 import MacrosChart from "../components/charts/MacrosChart";
 import HydrationWidget from "../components/HydrationWidget";
+import TodayTasksWidget from "../components/TodayTasksWidget";
+import AIInsightsWidget from "../components/AIInsightsWidget";
 import { useFitness } from "../context/FitnessContext";
 import { Activity, Flame, TrendingUp, Zap, Trophy, Droplets, Target, Cpu, ShieldAlert, Dumbbell, Utensils, Bot, ChevronLeft, ChevronRight, Home } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { getProgressSummary } from "../services/progressAnalyzer";
 
 export default function Dashboard() {
-  const { calorieHistory, workoutRoutine, workoutHistory, neuralXP, streak } = useFitness();
+  const { calorieHistory, workoutRoutine, workoutHistory, neuralXP, streak, userProfile, trainingPlan, getTodayTasks, updateDailyTask, weightHistory } = useFitness();
+  const [aiInsights, setAiInsights] = useState(null);
+
+  const isAdvanced = userProfile?.subscriptionTier === "advanced";
+  const todayTasks = getTodayTasks();
+
+  useEffect(() => {
+    if (isAdvanced && trainingPlan) {
+      const progressData = getProgressSummary(
+        { workoutHistory, calorieHistory, weightHistory, userProfile },
+        trainingPlan
+      );
+      setAiInsights(progressData.insights);
+    }
+  }, [isAdvanced, trainingPlan, workoutHistory, calorieHistory, weightHistory]);
 
   // Get latest day's data
   const todayStats = calorieHistory?.length > 0
@@ -67,6 +85,26 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+
+          {/* Advanced User Section - Training Plan Widgets */}
+          {isAdvanced && trainingPlan && (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <TodayTasksWidget
+                  todayTasks={todayTasks}
+                  onQuickComplete={async (taskType) => {
+                    if (todayTasks) {
+                      const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
+                      await updateDailyTask(trainingPlan.currentWeek, today, taskType);
+                    }
+                  }}
+                />
+              </div>
+              <div>
+                <AIInsightsWidget insights={aiInsights} loading={false} />
+              </div>
+            </div>
+          )}
 
           {/* Core Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
