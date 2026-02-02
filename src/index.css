@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+
+
+/* ===============================
+   THEME VARIABLES
+================================ */
+
+/* Default / Dark */
+:root,
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --card: #111827;
+  --accent: #22c55e;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #1f2933;
+}
+
+/* AMOLED */
+[data-theme="amoled"] {
+  --bg: #000000;
+  --card: #0b0b0b;
+  --accent: #22c55e;
+  --text: #f9fafb;
+  --muted: #6b7280;
+  --border: #121212;
+}
+
+/* Light */
+[data-theme="light"] {
+  --bg: #f9fafb;
+  --card: #ffffff;
+  --accent: #16a34a;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+/* ===============================
+   BASE STYLES
+================================ */
+
+body {
+  @apply bg-bg text-text font-sans antialiased;
+}
+
+/* ===============================
+   COMPONENT STYLES
+================================ */
+
+@layer components {
+
+  /* GLASSMORPHISM */
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/5;
+  }
+
+  .glass-hover {
+    @apply hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300;
+  }
+
+  /* CARDS */
+  .card {
+    @apply bg-card border border-white/5 rounded-3xl p-8 shadow-xl transition-all duration-300;
+  }
+
+  .card-premium {
+    @apply relative overflow-hidden border-white/5 hover:border-accent/20 bg-card;
+  }
+
+  /* BUTTONS */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-bold uppercase tracking-tight transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-black hover:-translate-y-1 hover:scale-[1.02];
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.3);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.5);
+  }
+
+  .btn-outline {
+    @apply border border-white/10 text-white hover:bg-white/5 hover:border-white/20;
+  }
+
+  /* SCROLLBAR HIDER */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* BACKGROUND UTILS */
+  .bg-grid {
+    background-size: 60px 60px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  }
+
+  .orbital-glow {
+    @apply absolute w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px] -z-10 pointer-events-none;
+  }
+
+  .mask-gradient-b {
+    mask-image: linear-gradient(to bottom, black 95%, transparent 100%);
+  }
+}
+
+/* CUSTOM ANIMATIONS */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--accent-rgb), 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.5);
+  }
+
+  100% {
+    box-shadow: 0 0 5px rgba(var(--accent-rgb), 0.2);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s infinite ease-in-out;
+}
+
+.animate-orbit {
+  animation: orbit 20s infinite linear;
+}
+
+:root {
+  --accent-rgb: 34, 197, 94;
+  /* Red color matching accent #22c55e */
+}
