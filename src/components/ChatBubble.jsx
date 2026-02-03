@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import { Bot, User } from "lucide-react";
 
-export default function ChatBubble({ role, text }) {
+export default function ChatBubble({ role, text, compact = false }) {
   const isUser = role === "user";
 
   return (
@@ -13,10 +13,11 @@ export default function ChatBubble({ role, text }) {
       )}
 
       <div
-        className={`max-w-[85%] md:max-w-[80%] px-6 py-4 md:px-8 md:py-6 rounded-[2rem] md:rounded-[2.5rem] text-sm leading-relaxed shadow-2xl relative
+        className={`max-w-[85%] md:max-w-[80%] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl relative transition-all duration-300 overflow-hidden
+        ${compact ? "px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm" : "px-6 py-4 md:px-8 md:py-6 text-sm"}
         ${isUser
-            ? "bg-white text-black rounded-br-none font-black uppercase italic tracking-tight"
-            : "bg-white/5 text-gray-200 rounded-bl-none border border-white/5 backdrop-blur-md"
+            ? "bg-white text-black rounded-br-none font-black uppercase italic tracking-tight break-words"
+            : "bg-white/5 text-gray-200 rounded-bl-none border border-white/5 backdrop-blur-md break-words"
           }`}
       >
         {isUser ? (
