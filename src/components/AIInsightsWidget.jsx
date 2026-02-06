@@ -4,16 +4,16 @@ import { Sparkles, TrendingUp, TrendingDown, AlertCircle, CheckCircle } from "lu
 export default function AIInsightsWidget({ insights, loading = false }) {
     if (loading) {
         return (
-            <div className="card-premium p-5 rounded-xl border border-white/5">
-                <div className="flex items-center gap-2 mb-4">
-                    <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center border border-accent/20">
-                        <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+            <div className="card-premium p-6 md:p-8 rounded-[2rem] border border-border bg-card/40 shadow-xl">
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center border border-accent/20 shadow-sm">
+                        <Sparkles className="w-5 h-5 text-accent animate-pulse" />
                     </div>
-                    <h3 className="text-lg font-black text-white uppercase italic tracking-tight">AI Insights</h3>
+                    <h3 className="text-sm font-black text-text uppercase italic tracking-[0.3em]">AI_SYNAPSE_IDLE</h3>
                 </div>
-                <div className="space-y-2">
-                    {[1, 2, 3].map(i => (
-                        <div key={i} className="h-12 bg-white/5 rounded-lg animate-pulse" />
+                <div className="space-y-3">
+                    {[1, 2].map(i => (
+                        <div key={i} className="h-16 bg-card/60 rounded-2xl animate-pulse border border-border/50" />
                     ))}
                 </div>
             </div>
@@ -51,19 +51,19 @@ export default function AIInsightsWidget({ insights, loading = false }) {
     };
 
     return (
-        <div className="card-premium p-4 rounded-xl border border-white/5 relative overflow-hidden group">
+        <div className="card-premium p-6 md:p-8 rounded-[2rem] border border-border relative overflow-hidden group shadow-xl bg-card/40">
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-                <Sparkles className="w-32 h-32 text-accent" />
+            <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none group-hover:rotate-12 transition-transform duration-1000">
+                <Sparkles className="w-40 h-40 text-accent" />
             </div>
 
             <div className="relative z-10">
                 {/* Header */}
-                <div className="flex items-center gap-2 mb-4">
-                    <div className="w-7 h-7 bg-accent/10 rounded-lg flex items-center justify-center border border-accent/20 shadow-lg shadow-accent/10">
-                        <Sparkles className="w-3.5 h-3.5 text-accent" />
+                <div className="flex items-center gap-4 mb-6">
+                    <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center border border-accent/20 shadow-xl shadow-accent/5">
+                        <Sparkles className="w-5 h-5 text-accent" />
                     </div>
-                    <h3 className="text-sm font-black text-white uppercase italic tracking-tight">AI Insights</h3>
+                    <h3 className="text-[0.65rem] font-black text-text uppercase italic tracking-[0.4em] opacity-80">AI_INTELLIGENCE_STREAM</h3>
                 </div>
 
                 {/* Insights */}
@@ -71,20 +71,20 @@ export default function AIInsightsWidget({ insights, loading = false }) {
                     {insights.slice(0, 3).map((insight, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: -10 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className={`p-2.5 rounded-xl border ${getColors(insight.type)} transition-all`}
+                            transition={{ delay: index * 0.15 }}
+                            className={`p-4 rounded-2xl border ${getColors(insight.type)} transition-all shadow-sm group/insight hover:scale-[1.02]`}
                         >
-                            <div className="flex items-start gap-2.5">
-                                <div className="flex-shrink-0 mt-0.5 scale-[0.65]">
+                            <div className="flex items-start gap-3.5">
+                                <div className="flex-shrink-0 mt-0.5 scale-110">
                                     {getIcon(insight.type)}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <h4 className="text-[10px] font-black text-white uppercase italic tracking-widest mb-0.5">
+                                    <h4 className="text-[0.6rem] font-black text-text uppercase italic tracking-[0.3em] mb-1.5 opacity-90">
                                         {insight.title}
                                     </h4>
-                                    <p className="text-[8px] text-muted font-black uppercase tracking-tight leading-normal opacity-80">
+                                    <p className="text-xs text-muted font-black uppercase tracking-tight leading-relaxed opacity-60 italic">
                                         {insight.message}
                                     </p>
                                 </div>

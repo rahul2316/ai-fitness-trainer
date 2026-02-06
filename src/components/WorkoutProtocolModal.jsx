@@ -57,7 +57,7 @@ export default function WorkoutProtocolModal({ workout, onClose }) {
             <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="relative bg-card border-0 md:border border-white/10 w-full md:max-w-6xl rounded-none md:rounded-xl overflow-hidden shadow-none flex flex-col md:flex-row h-dvh md:h-[85vh]"
+                className="relative bg-card border-0 md:border border-border w-full md:max-w-6xl rounded-none md:rounded-2xl overflow-hidden shadow-none flex flex-col md:flex-row h-dvh md:h-[85vh]"
             >
                 {/* Visual / Control Panel */}
                 <div className="md:w-[55%] p-4 md:p-8 flex flex-col relative overflow-hidden h-1/2 md:h-full">
@@ -67,32 +67,32 @@ export default function WorkoutProtocolModal({ workout, onClose }) {
 
                     {!isLive ? (
                         <div className="flex-grow flex flex-col justify-center relative z-10">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-1 h-8 bg-accent rounded-full shadow-[0_0_10px_rgba(var(--accent-rgb),0.5)]"></div>
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="w-1.5 h-10 bg-accent rounded-full shadow-[0_0_15px_rgba(var(--accent-rgb),0.5)]"></div>
                                 <div>
-                                    <p className="text-accent font-black uppercase tracking-[0.3em] text-[8px] leading-tight mb-0.5">Protocol</p>
-                                    <h2 className="text-xl md:text-2xl font-black text-white uppercase italic tracking-tighter leading-none">{workout.name}</h2>
+                                    <p className="text-accent font-black uppercase tracking-[0.4em] text-[0.65rem] leading-tight mb-1.5 opacity-80">Protocol</p>
+                                    <h2 className="text-2xl md:text-3xl font-black text-text uppercase italic tracking-tighter leading-none">{workout.name}</h2>
                                 </div>
                             </div>
 
-                            <p className="text-muted text-[11px] font-bold uppercase tracking-tight mb-6 md:mb-8 max-w-sm leading-relaxed opacity-60 line-clamp-2">
+                            <p className="text-muted text-xs font-bold uppercase tracking-widest mb-8 md:mb-12 max-w-md leading-relaxed opacity-60 italic">
                                 EXECUTE SYSTEMATIC PROTOCOLS. MAINTAIN PEAK INTENSITY.
                             </p>
 
                             <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
-                                <div className="p-3 md:p-4 bg-white/5 rounded-xl border border-white/5 group hover:border-accent/20 transition-all text-left">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <Timer className="w-3 h-3 text-accent" />
-                                        <p className="text-[8px] font-black text-muted uppercase tracking-widest leading-none">Estimate</p>
+                                <div className="p-4 md:p-6 bg-card/40 rounded-2xl border border-border group hover:border-accent/30 transition-all text-left">
+                                    <div className="flex items-center gap-2.5 mb-2.5">
+                                        <Timer className="w-4 h-4 text-accent" />
+                                        <p className="text-[0.6rem] font-black text-muted uppercase tracking-widest leading-none opacity-60">Estimate</p>
                                     </div>
-                                    <p className="text-lg md:text-xl font-black text-white italic tracking-tighter">{workout.duration}</p>
+                                    <p className="text-2xl md:text-3xl font-black text-text italic tracking-tighter">{workout.duration}</p>
                                 </div>
-                                <div className="p-3 md:p-4 bg-white/5 rounded-xl border border-white/5 group hover:border-accent/20 transition-all text-left">
-                                    <div className="flex items-center gap-2 mb-2">
-                                        <Zap className="w-3 h-3 text-orange-400" />
-                                        <p className="text-[8px] font-black text-muted uppercase tracking-widest leading-none">Count</p>
+                                <div className="p-4 md:p-6 bg-card/40 rounded-2xl border border-border group hover:border-accent/30 transition-all text-left">
+                                    <div className="flex items-center gap-2.5 mb-2.5">
+                                        <Zap className="w-4 h-4 text-orange-400" />
+                                        <p className="text-[0.6rem] font-black text-muted uppercase tracking-widest leading-none opacity-60">Count</p>
                                     </div>
-                                    <p className="text-lg md:text-xl font-black text-white italic tracking-tighter">{exercises.length} EX</p>
+                                    <p className="text-2xl md:text-3xl font-black text-text italic tracking-tighter">{exercises.length} EX</p>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +100,8 @@ export default function WorkoutProtocolModal({ workout, onClose }) {
                         <div className="flex-grow flex flex-col relative z-10">
                             <div className="flex justify-between items-center mb-6 md:mb-10">
                                 <div className="flex flex-col">
-                                    <p className="text-[8px] font-black text-accent uppercase tracking-[0.4em] mb-1 px-1">Active Step</p>
-                                    <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter italic leading-none">{currentExerciseIdx + 1}<span className="text-lg text-muted mx-1">/</span>{exercises.length}</h3>
+                                    <p className="text-[0.6rem] font-black text-accent uppercase tracking-[0.4em] mb-2 px-1 opacity-80">Active Step</p>
+                                    <h3 className="text-2xl md:text-4xl font-black text-text uppercase tracking-tighter italic leading-none">{currentExerciseIdx + 1}<span className="text-xl text-muted mx-2 opacity-40">/</span>{exercises.length}</h3>
                                 </div>
                                 <div className="flex gap-2">
                                     <button onClick={prevExercise} disabled={currentExerciseIdx === 0} className="p-2 md:p-3 bg-white/5 rounded-lg disabled:opacity-5 border border-white/10 hover:bg-white hover:text-black transition-all group/btn"><ChevronLeft className="w-5 h-5" /></button>
@@ -138,15 +138,15 @@ export default function WorkoutProtocolModal({ workout, onClose }) {
                                                 </button>
                                             </div>
                                         </div>
-                                        <div className="flex gap-4 md:gap-8 bg-white/5 p-3 md:p-5 rounded-xl border border-white/10 shrink-0">
+                                        <div className="flex gap-4 md:gap-8 bg-card/40 p-4 md:p-6 rounded-2xl border border-border shrink-0">
                                             <div>
-                                                <p className="text-[7px] font-black text-muted uppercase tracking-widest mb-1 leading-none">Sets</p>
-                                                <p className="text-xl md:text-2xl font-black text-white italic tracking-tighter leading-none">{currentExercise?.sets}</p>
+                                                <p className="text-[0.6rem] font-black text-muted uppercase tracking-widest mb-1.5 leading-none opacity-60">Sets</p>
+                                                <p className="text-2xl md:text-3xl font-black text-text italic tracking-tighter leading-none">{currentExercise?.sets}</p>
                                             </div>
-                                            <div className="w-[1px] h-6 bg-white/10 mt-1"></div>
+                                            <div className="w-[1px] h-8 bg-border mt-1"></div>
                                             <div>
-                                                <p className="text-[7px] font-black text-muted uppercase tracking-widest mb-1 leading-none">{currentExercise?.duration !== "N/A" ? "Time" : "Reps"}</p>
-                                                <p className="text-xl md:text-2xl font-black text-white italic tracking-tighter leading-none">{currentExercise?.duration !== "N/A" ? currentExercise?.duration : currentExercise?.reps}</p>
+                                                <p className="text-[0.6rem] font-black text-muted uppercase tracking-widest mb-1.5 leading-none opacity-60">{currentExercise?.duration !== "N/A" ? "Time" : "Reps"}</p>
+                                                <p className="text-2xl md:text-3xl font-black text-text italic tracking-tighter leading-none">{currentExercise?.duration !== "N/A" ? currentExercise?.duration : currentExercise?.reps}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -196,20 +196,20 @@ export default function WorkoutProtocolModal({ workout, onClose }) {
                                     </div>
                                     <div className="flex-grow min-w-0">
                                         <div className="flex justify-between items-center gap-2">
-                                            <p className={`font-black text-sm uppercase italic tracking-tighter truncate ${isLive && idx === currentExerciseIdx ? 'text-white' : 'text-white/80'}`}>{ex.name}</p>
+                                            <p className={`font-black text-sm uppercase italic tracking-tighter truncate ${isLive && idx === currentExerciseIdx ? 'text-accent' : 'text-text/80'}`}>{ex.name}</p>
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     const fullEx = EXERCISE_DATABASE.find(item => item.name === ex.name);
                                                     setDetailExercise(fullEx || ex);
                                                 }}
-                                                className="p-1 bg-white/5 hover:bg-white/10 rounded-lg shrink-0"
+                                                className="p-1 px-2.5 bg-card/40 hover:bg-card/60 rounded-lg border border-border"
                                             >
-                                                <Info className="w-3 h-3 text-muted" />
+                                                <Info className="w-3.5 h-3.5 text-muted" />
                                             </button>
                                         </div>
-                                        <div className="flex items-center gap-2 mt-0.5">
-                                            <span className="text-[7px] font-black text-muted uppercase tracking-widest leading-none">
+                                        <div className="flex items-center gap-2 mt-1">
+                                            <span className="text-[0.6rem] font-black text-muted uppercase tracking-[0.15em] leading-none opacity-60">
                                                 {ex.duration !== "N/A" ? `Time: ${ex.duration}` : `Vol: ${ex.sets}x${ex.reps}`}
                                             </span>
                                         </div>
@@ -232,10 +232,10 @@ export default function WorkoutProtocolModal({ workout, onClose }) {
                             <button
                                 onClick={handleComplete}
                                 disabled={completing}
-                                className="w-full bg-white text-zinc-950 py-4 rounded-xl font-black uppercase tracking-widest hover:bg-accent transition-all flex items-center justify-center gap-3 group shadow-xl shadow-white/5 italic text-[11px]"
+                                className="w-full bg-text text-bg py-4 rounded-xl font-black uppercase tracking-widest hover:bg-accent hover:text-bg transition-all flex items-center justify-center gap-3 group shadow-xl shadow-accent/10 italic text-xs"
                             >
                                 {completing ? (
-                                    <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+                                    <div className="w-5 h-5 border-2 border-bg/20 border-t-bg rounded-full animate-spin" />
                                 ) : (
                                     <CheckCircle2 className="w-5 h-5" />
                                 )}

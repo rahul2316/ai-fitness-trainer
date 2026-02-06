@@ -7,30 +7,30 @@ export default function ChatBubble({ role, text, compact = false }) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"} items-end gap-4`}>
       {!isUser && (
-        <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center border border-accent/20 flex-shrink-0 mb-1">
-          <Bot className="w-5 h-5 text-accent" />
+        <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center border border-accent/20 flex-shrink-0 mb-2 shadow-sm">
+          <Bot className="w-6 h-6 text-accent" />
         </div>
       )}
 
       <div
-        className={`max-w-[85%] md:max-w-[80%] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl relative transition-all duration-300 overflow-hidden
-        ${compact ? "px-4 py-3 md:px-6 md:py-4 text-xs md:text-sm" : "px-6 py-4 md:px-8 md:py-6 text-sm"}
+        className={`max-w-[85%] md:max-w-[80%] rounded-[2.5rem] md:rounded-[3rem] shadow-2xl relative transition-all duration-300 overflow-hidden
+        ${compact ? "px-6 py-4 md:px-8 md:py-6 text-sm" : "px-8 py-5 md:px-10 md:py-8 text-sm md:text-base"}
         ${isUser
-            ? "bg-white text-black rounded-br-none font-black uppercase italic tracking-tight break-words"
-            : "bg-white/5 text-gray-200 rounded-bl-none border border-white/5 backdrop-blur-md break-words"
+            ? "bg-text text-bg rounded-br-none font-black uppercase italic tracking-tighter break-words"
+            : "bg-card/40 text-text rounded-bl-none border border-border backdrop-blur-md break-words shadow-sm"
           }`}
       >
         {isUser ? (
-          <div className="flex flex-col gap-1">
-            <span className="text-[8px] opacity-40 mb-1">USER_INPUT_NODE</span>
+          <div className="flex flex-col gap-2">
+            <span className="text-[0.6rem] font-black opacity-30 tracking-[0.3em] uppercase">USER_UPLINK</span>
             {text}
           </div>
         ) : (
           <div className="prose prose-sm prose-invert max-w-none 
-              prose-p:my-2 prose-headings:my-4 prose-ul:my-2 prose-li:my-1
-              prose-strong:text-accent prose-strong:font-black prose-a:text-accent prose-code:text-accent prose-code:bg-white/5 prose-code:px-1 prose-code:rounded">
-            <div className="text-[8px] font-black text-accent/50 uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-accent/30 rounded-full"></span>
+              prose-p:my-3 prose-headings:my-5 prose-ul:my-3 prose-li:my-1.5
+              prose-strong:text-accent prose-strong:font-black prose-a:text-accent prose-code:text-accent prose-code:bg-card/60 prose-code:px-1.5 prose-code:rounded">
+            <div className="text-[0.6rem] font-black text-accent/60 uppercase tracking-[0.4em] mb-6 flex items-center gap-2.5">
+              <span className="w-2 h-2 bg-accent/30 rounded-full animate-pulse"></span>
               NEURAL_FEEDBACK_TRANSMISSION
             </div>
             <ReactMarkdown>
@@ -41,8 +41,8 @@ export default function ChatBubble({ role, text, compact = false }) {
       </div>
 
       {isUser && (
-        <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center border border-white/10 flex-shrink-0 mb-1">
-          <User className="w-5 h-5 text-white" />
+        <div className="w-12 h-12 bg-text/10 rounded-2xl flex items-center justify-center border border-text/10 flex-shrink-0 mb-2 shadow-sm">
+          <User className="w-6 h-6 text-text" />
         </div>
       )}
     </div>

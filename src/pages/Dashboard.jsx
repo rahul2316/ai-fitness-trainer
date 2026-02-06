@@ -61,24 +61,24 @@ export default function Dashboard() {
               <div className="flex items-center gap-2.5">
                 <div className="w-1 h-8 bg-accent rounded-full"></div>
                 <div>
-                  <h1 className="text-xl md:text-2xl font-black tracking-tighter text-white uppercase italic">Dashboard</h1>
-                  <p className="text-[6px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Control Center</p>
+                  <h1 className="text-2xl md:text-3xl font-black tracking-tighter text-text uppercase italic leading-none">Dashboard</h1>
+                  <p className="text-[0.6rem] text-accent font-black uppercase tracking-[0.4em] mt-1.5 opacity-80">CONTROL CENTER</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-1.5 p-2 bg-white/5 backdrop-blur-2xl rounded-xl border border-white/5 relative group">
                 <div className="flex items-center gap-3 px-3 border-r border-white/10 relative z-10">
-                  <Trophy className="w-4 h-4 text-accent" />
+                  <Trophy className="w-5 h-5 text-accent" />
                   <div className="text-left">
-                    <p className="text-[6px] font-black text-muted uppercase tracking-widest">Neural XP</p>
-                    <p className="text-base font-black text-white tabular-nums leading-none">{neuralXP || 0}</p>
+                    <p className="text-[0.6rem] font-black text-muted uppercase tracking-[0.2em] opacity-60">Neural XP</p>
+                    <p className="text-lg font-black text-text tabular-nums leading-none">{neuralXP || 0}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 px-3 relative z-10">
-                  <Zap className="w-4 h-4 text-cyan-400" />
+                  <Zap className="w-5 h-5 text-cyan-400" />
                   <div className="text-left">
-                    <p className="text-[6px] font-black text-muted uppercase tracking-widest">Active Streak</p>
-                    <p className="text-base font-black text-white tabular-nums leading-none">{streak || 0}</p>
+                    <p className="text-[0.6rem] font-black text-muted uppercase tracking-[0.2em] opacity-60">Active Streak</p>
+                    <p className="text-lg font-black text-text tabular-nums leading-none">{streak || 0}</p>
                   </div>
                 </div>
               </div>
@@ -109,41 +109,41 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Primary Metabolic Controller */}
             <motion.div
-              whileHover={{ scale: 1.002 }}
-              className="md:col-span-2 card-premium p-3.5 md:p-5 rounded-xl border border-white/5 relative overflow-hidden group shadow-lg"
+              whileHover={{ y: -2 }}
+              className="md:col-span-2 card-premium p-5 md:p-6 rounded-2xl border border-border relative overflow-hidden group shadow-xl bg-card/40"
             >
               <div className="absolute top-0 right-0 p-12 opacity-5 -translate-y-6 translate-x-6 pointer-events-none group-hover:rotate-12 transition-transform duration-1000">
                 <Activity className="w-48 h-48 text-accent" />
               </div>
 
               <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
-                  <Cpu className="w-3 h-3 text-accent" />
-                  <p className="text-muted text-[8px] font-black uppercase tracking-[0.4em]">Metabolic Hub</p>
+                <div className="flex items-center gap-2.5 mb-6">
+                  <Cpu className="w-4 h-4 text-accent" />
+                  <p className="text-muted text-[0.6rem] font-black uppercase tracking-[0.4em] opacity-60">Metabolic Hub</p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-end gap-6">
                   <div>
-                    <div className="flex items-center gap-1.5 mb-1.5">
-                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                      <p className="text-[7px] font-black text-emerald-400/80 uppercase tracking-widest">Intake</p>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
+                      <p className="text-[0.6rem] font-black text-emerald-400 uppercase tracking-widest opacity-80">Intake</p>
                     </div>
-                    <div className="flex items-baseline gap-1">
-                      <h2 className="text-2xl md:text-3xl font-black text-white italic tracking-tighter leading-none">{todayStats.intake}</h2>
-                      <span className="text-[8px] font-black text-muted uppercase tracking-tighter">KCAL</span>
+                    <div className="flex items-baseline gap-2">
+                      <h2 className="text-3xl md:text-4xl font-black text-text italic tracking-tighter leading-none">{todayStats.intake}</h2>
+                      <span className="text-[0.6rem] font-black text-muted uppercase tracking-widest opacity-60 tabular-nums">KCAL</span>
                     </div>
                   </div>
 
                   <div className="h-12 w-[1px] bg-white/10 hidden sm:block mb-1"></div>
 
                   <div>
-                    <div className="flex items-center gap-1.5 mb-1.5">
-                      <div className="w-1.5 h-1.5 bg-orange-500 rounded-full"></div>
-                      <p className="text-[7px] font-black text-orange-400/80 uppercase tracking-widest">Burned</p>
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.4)]"></div>
+                      <p className="text-[0.6rem] font-black text-orange-400 uppercase tracking-widest opacity-80">Burned</p>
                     </div>
-                    <div className="flex items-baseline gap-1">
-                      <h2 className="text-2xl md:text-3xl font-black text-white italic tracking-tighter leading-none">{todayStats.burned || 0}</h2>
-                      <span className="text-[8px] font-black text-muted uppercase tracking-tighter">KCAL</span>
+                    <div className="flex items-baseline gap-2">
+                      <h2 className="text-3xl md:text-4xl font-black text-text italic tracking-tighter leading-none">{todayStats.burned || 0}</h2>
+                      <span className="text-[0.6rem] font-black text-muted uppercase tracking-widest opacity-60 tabular-nums">KCAL</span>
                     </div>
                   </div>
                 </div>
@@ -151,11 +151,11 @@ export default function Dashboard() {
             </motion.div>
 
             {/* Reliability Widget */}
-            <div className="card-premium p-3.5 md:p-5 rounded-xl border border-white/5 hover:border-accent/30 transition-all flex flex-col justify-between group">
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-muted text-[8px] font-black uppercase tracking-[0.3em]">Consistency</p>
-                <div className="p-1.5 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-                  <ShieldAlert className="w-3.5 h-3.5 text-emerald-500" />
+            <div className="card-premium p-5 md:p-6 rounded-2xl border border-border bg-card/40 hover:border-accent/30 transition-all flex flex-col justify-between group">
+              <div className="flex items-center justify-between mb-6">
+                <p className="text-muted text-[0.6rem] font-black uppercase tracking-[0.3em] opacity-60">Consistency</p>
+                <div className="p-2 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                  <ShieldAlert className="w-4 h-4 text-emerald-500" />
                 </div>
               </div>
 
@@ -175,12 +175,12 @@ export default function Dashboard() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-xl font-black text-white italic tracking-tighter leading-none">{consistencyScore}%</span>
-                    <span className="text-[7px] font-black text-muted uppercase mt-0.5">Sync</span>
+                    <span className="text-2xl font-black text-text italic tracking-tighter leading-none">{consistencyScore}%</span>
+                    <span className="text-[0.6rem] font-black text-muted uppercase mt-1 opacity-60 tracking-widest">SYNC</span>
                   </div>
                 </div>
-                <p className="text-[8px] text-muted text-center font-black uppercase tracking-widest leading-relaxed px-2">
-                  Reliability <span className="text-accent">Sync</span> 7d
+                <p className="text-[0.6rem] text-muted text-center font-black uppercase tracking-[0.15em] leading-relaxed px-2 opacity-60">
+                  Reliability <span className="text-accent underline decoration-accent/30 underline-offset-4">Sync</span> 7d
                 </p>
               </div>
             </div>
@@ -189,55 +189,55 @@ export default function Dashboard() {
 
           {/* Strategic Hubs Navigation */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link to="/workouts" className="card-premium p-2.5 rounded-xl border border-white/5 hover:border-accent/30 transition-all flex items-center gap-3 group relative overflow-hidden">
+            <Link to="/workouts" className="card-premium p-4 rounded-2xl border border-border bg-card/40 hover:border-accent/30 transition-all flex items-center gap-4 group relative overflow-hidden">
               <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl"></div>
-              <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center border border-accent/20 group-hover:rotate-6 transition-all relative z-10 shrink-0">
-                <Dumbbell className="w-5 h-5 text-accent" />
+              <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center border border-accent/20 group-hover:rotate-6 transition-all relative z-10 shrink-0">
+                <Dumbbell className="w-6 h-6 text-accent" />
               </div>
               <div className="relative z-10">
-                <h3 className="text-sm font-black text-white uppercase italic tracking-tighter group-hover:text-accent transition-colors">Workouts</h3>
-                <p className="text-[6px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Tactical</p>
+                <h3 className="text-base font-black text-text uppercase italic tracking-tighter group-hover:text-accent transition-colors leading-none">Workouts</h3>
+                <p className="text-[0.6rem] text-muted font-black uppercase tracking-[0.3em] mt-2 opacity-60">TACTICAL</p>
               </div>
-              <ChevronRight className="ml-auto w-3.5 h-3.5 text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" />
+              <ChevronRight className="ml-auto w-5 h-5 text-muted group-hover:text-accent group-hover:translate-x-1 transition-all" />
             </Link>
 
-            <Link to="/diet" className="card-premium p-2.5 rounded-xl border border-white/5 hover:border-blue-400/30 transition-all flex items-center gap-3 group relative overflow-hidden">
+            <Link to="/diet" className="card-premium p-4 rounded-2xl border border-border bg-card/40 hover:border-blue-400/30 transition-all flex items-center gap-4 group relative overflow-hidden">
               <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl"></div>
-              <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center border border-blue-500/20 group-hover:rotate-6 transition-all relative z-10 shrink-0">
-                <Utensils className="w-5 h-5 text-blue-400" />
+              <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center border border-blue-500/20 group-hover:rotate-6 transition-all relative z-10 shrink-0">
+                <Utensils className="w-6 h-6 text-blue-400" />
               </div>
               <div className="relative z-10">
-                <h3 className="text-sm font-black text-white uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">Diet</h3>
-                <p className="text-[6px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Bio-Fuel</p>
+                <h3 className="text-base font-black text-text uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors leading-none">Diet</h3>
+                <p className="text-[0.6rem] text-muted font-black uppercase tracking-[0.3em] mt-2 opacity-60">BIO-FUEL</p>
               </div>
-              <ChevronRight className="ml-auto w-3.5 h-3.5 text-muted group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+              <ChevronRight className="ml-auto w-5 h-5 text-muted group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
             </Link>
 
-            <Link to="/ai-coach" className="card-premium p-2.5 rounded-xl border border-white/5 hover:border-purple-400/30 transition-all flex items-center gap-3 group relative overflow-hidden">
+            <Link to="/ai-coach" className="card-premium p-4 rounded-2xl border border-border bg-card/40 hover:border-purple-400/30 transition-all flex items-center gap-4 group relative overflow-hidden">
               <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl"></div>
-              <div className="w-10 h-10 bg-purple-500/10 rounded-lg flex items-center justify-center border border-purple-500/20 group-hover:rotate-6 transition-all relative z-10 shrink-0">
-                <Bot className="w-5 h-5 text-purple-400" />
+              <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center border border-purple-500/20 group-hover:rotate-6 transition-all relative z-10 shrink-0">
+                <Bot className="w-6 h-6 text-purple-400" />
               </div>
               <div className="relative z-10">
-                <h3 className="text-sm font-black text-white uppercase italic tracking-tighter group-hover:text-purple-400 transition-colors">AI Coach</h3>
-                <p className="text-[6px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Neural</p>
+                <h3 className="text-base font-black text-text uppercase italic tracking-tighter group-hover:text-purple-400 transition-colors leading-none">AI Coach</h3>
+                <p className="text-[0.6rem] text-muted font-black uppercase tracking-[0.3em] mt-2 opacity-60">NEURAL</p>
               </div>
-              <ChevronRight className="ml-auto w-3.5 h-3.5 text-muted group-hover:text-purple-400 group-hover:translate-x-1 transition-all" />
+              <ChevronRight className="ml-auto w-5 h-5 text-muted group-hover:text-purple-400 group-hover:translate-x-1 transition-all" />
             </Link>
           </div>
 
           {/* Secondary Data Matrix */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="card-premium p-4 rounded-xl border border-white/5 relative overflow-hidden group">
-              <div className="flex justify-between items-center mb-4 relative z-10">
+            <div className="card-premium p-6 rounded-2xl border border-border bg-card/40 relative overflow-hidden group">
+              <div className="flex justify-between items-center mb-6 relative z-10">
                 <div>
-                  <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white italic">Macros</h3>
-                  <p className="text-[7px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Daily split</p>
+                  <h3 className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-text italic">Macros</h3>
+                  <p className="text-[0.6rem] text-muted font-black uppercase tracking-[0.3em] mt-1.5 opacity-60">DAILY SPLIT</p>
                 </div>
-                <div className="flex gap-2">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
-                  <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
-                  <div className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+                <div className="flex gap-2.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
                 </div>
               </div>
               <div className="relative z-10">
@@ -252,26 +252,26 @@ export default function Dashboard() {
 
           {/* Longitudinal Trajectory Matrix */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div className="card-premium p-3.5 md:p-5 rounded-xl border border-white/5 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
-                <Target className="w-12 h-12 text-accent" />
+            <div className="card-premium p-5 md:p-6 rounded-2xl border border-border bg-card/40 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+                <Target className="w-16 h-16 text-accent" />
               </div>
-              <div className="mb-4 relative z-10">
-                <h3 className="text-[9px] font-black uppercase tracking-[0.3em] text-white italic">Body Weight</h3>
-                <p className="text-[6px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Trajectory</p>
+              <div className="mb-6 relative z-10">
+                <h3 className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-text italic">Body Weight</h3>
+                <p className="text-[0.6rem] text-muted font-black uppercase tracking-[0.3em] mt-1.5 opacity-60">TRAJECTORY</p>
               </div>
               <div className="relative z-10">
                 <WeightChart />
               </div>
             </div>
 
-            <div className="card-premium p-3.5 md:p-5 rounded-xl border border-white/5 group relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
-                <Flame className="w-12 h-12 text-accent" />
+            <div className="card-premium p-5 md:p-6 rounded-2xl border border-border bg-card/40 group relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+                <Flame className="w-16 h-16 text-accent" />
               </div>
-              <div className="mb-4 relative z-10">
-                <h3 className="text-[9px] font-black uppercase tracking-[0.3em] text-white italic">Energy Flux</h3>
-                <p className="text-[6px] text-muted font-black uppercase tracking-[0.3em] mt-0.5">Fuel balance</p>
+              <div className="mb-6 relative z-10">
+                <h3 className="text-[0.65rem] font-black uppercase tracking-[0.3em] text-text italic">Energy Flux</h3>
+                <p className="text-[0.6rem] text-muted font-black uppercase tracking-[0.3em] mt-1.5 opacity-60">FUEL BALANCE</p>
               </div>
               <div className="relative z-10">
                 <CaloriesChart />

@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 export default function WorkoutCard({ workout, onView, onRemove }) {
   return (
     <motion.div
-      whileHover={{ y: -2 }}
-      className="card-premium p-3 rounded-xl border border-white/5 relative overflow-hidden group h-full flex flex-col"
+      whileHover={{ y: -4 }}
+      className="card-premium p-6 md:p-8 rounded-[2rem] border border-border relative overflow-hidden group h-full flex flex-col bg-card/40 hover:border-accent/40 shadow-xl transition-all"
     >
       {/* Removal Button */}
       {onRemove && (
@@ -19,35 +19,35 @@ export default function WorkoutCard({ workout, onView, onRemove }) {
           <Plus className="w-4 h-4 rotate-45" />
         </button>
       )}
-      <div className="absolute top-0 right-0 p-8 opacity-5 -rotate-12 group-hover:rotate-0 transition-transform duration-700">
-        <Activity className="w-24 h-24 text-accent" />
+      <div className="absolute top-0 right-0 p-10 opacity-5 -rotate-12 group-hover:rotate-0 transition-transform duration-1000 pointer-events-none">
+        <Activity className="w-28 h-28 text-accent" />
       </div>
 
       <div className="relative z-10 flex-grow">
-        <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-accent/10 rounded-full border border-accent/20 mb-3">
-          <span className="w-1 h-1 bg-accent rounded-full"></span>
-          <p className="text-[7px] font-black text-accent uppercase tracking-widest">Protocol</p>
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-lg border border-accent/20 mb-4 shadow-sm">
+          <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span>
+          <p className="text-[0.6rem] font-black text-accent uppercase tracking-[0.3em]">NEURAL_PROTOCOL</p>
         </div>
 
-        <h3 className="text-sm font-black text-white mb-3 uppercase italic tracking-tighter group-hover:text-accent transition-colors leading-tight line-clamp-1">
+        <h3 className="text-xl font-black text-text mb-4 uppercase italic tracking-tighter group-hover:text-accent transition-colors leading-none line-clamp-1">
           {workout.name}
         </h3>
 
-        <div className="grid grid-cols-2 gap-1.5 mb-3">
-          <div className="flex flex-col gap-0.5 p-2 bg-white/5 rounded-lg border border-white/5 group-hover:border-accent/10 transition-colors">
-            <div className="flex items-center gap-1 text-[6px] font-black text-muted uppercase tracking-widest mb-0.5">
-              <Timer className="w-2.5 h-2.5 text-accent opacity-50" />
-              <span>Time</span>
+        <div className="grid grid-cols-2 gap-3 mb-6">
+          <div className="flex flex-col gap-2 p-4 bg-card/60 rounded-2xl border border-border group-hover:border-accent/10 transition-all shadow-inner">
+            <div className="flex items-center gap-2 text-[0.6rem] font-black text-muted uppercase tracking-[0.3em] mb-1 opacity-60">
+              <Timer className="w-3.5 h-3.5 text-accent" />
+              <span>TIME_DUR</span>
             </div>
-            <p className="text-[10px] font-black text-white italic tracking-tight">{workout.duration}</p>
+            <p className="text-xl font-black text-text italic tracking-tighter leading-none">{workout.duration}</p>
           </div>
 
-          <div className="flex flex-col gap-0.5 p-2 bg-white/5 rounded-lg border border-white/5 group-hover:border-accent/10 transition-colors">
-            <div className="flex items-center gap-1 text-[6px] font-black text-muted uppercase tracking-widest mb-0.5">
-              <Layers className="w-2.5 h-2.5 text-accent opacity-50" />
-              <span>Build</span>
+          <div className="flex flex-col gap-2 p-4 bg-card/60 rounded-2xl border border-border group-hover:border-accent/10 transition-all shadow-inner">
+            <div className="flex items-center gap-2 text-[0.6rem] font-black text-muted uppercase tracking-[0.3em] mb-1 opacity-60">
+              <Layers className="w-3.5 h-3.5 text-accent" />
+              <span>COMP_MODS</span>
             </div>
-            <p className="text-[10px] font-black text-white italic tracking-tight">
+            <p className="text-xl font-black text-text italic tracking-tighter leading-none">
               {Array.isArray(workout.exercises) ? workout.exercises.length : workout.exercises} EX
             </p>
           </div>
@@ -56,10 +56,10 @@ export default function WorkoutCard({ workout, onView, onRemove }) {
 
       <button
         onClick={() => onView(workout)}
-        className="relative z-10 w-full bg-white text-black font-black py-2 rounded-lg text-[8px] uppercase tracking-widest flex items-center justify-center gap-1.5 transition-all shadow-md group/btn hover:bg-accent"
+        className="relative z-10 w-full bg-text text-bg font-black py-4 rounded-xl text-[0.65rem] uppercase tracking-widest flex items-center justify-center gap-3 transition-all shadow-xl group/btn hover:bg-accent hover:text-bg italic active:scale-95"
       >
-        ANALYSIS
-        <ChevronRight className="w-2.5 h-2.5 group-hover/btn:translate-x-1 transition-transform" />
+        INITIATE_ANALYSIS
+        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-2 transition-transform" />
       </button>
     </motion.div>
   );

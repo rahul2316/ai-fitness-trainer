@@ -41,14 +41,14 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    className="relative w-full max-w-2xl bg-card border border-white/10 rounded-xl p-4 md:p-8 shadow-2xl max-h-[90vh] flex flex-col overflow-hidden"
+                    className="relative w-full max-w-2xl bg-card border border-border rounded-2xl p-6 md:p-10 shadow-2xl max-h-[90vh] flex flex-col overflow-hidden"
                 >
                     {/* Close button */}
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 w-8 h-8 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center transition-all"
+                        className="absolute top-6 right-6 w-10 h-10 bg-card/40 hover:bg-card/60 rounded-xl flex items-center justify-center border border-border transition-all"
                     >
-                        <X className="w-4 h-4 text-muted" />
+                        <X className="w-5 h-5 text-muted" />
                     </button>
 
                     {/* Header */}
@@ -56,20 +56,20 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                         <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-3 border border-accent/20">
                             <Sparkles className="w-6 h-6 text-accent" />
                         </div>
-                        <h2 className="text-xl font-black text-white uppercase italic tracking-tight mb-1">
+                        <h2 className="text-2xl font-black text-text uppercase italic tracking-tighter mb-1.5">
                             Generate Protocol
                         </h2>
-                        <p className="text-[10px] text-muted font-bold uppercase tracking-widest">
-                            AI-Powered Optimization Engine
+                        <p className="text-[0.65rem] text-accent font-black uppercase tracking-[0.4em] opacity-80">
+                            AI-POWERED OPTIMIZATION ENGINE
                         </p>
                     </div>
 
                     {/* Progress indicator */}
-                    <div className="flex items-center justify-center gap-1.5 mb-6">
+                    <div className="flex items-center justify-center gap-2 mb-8">
                         {[1, 2, 3, 4].map((s) => (
                             <div
                                 key={s}
-                                className={`h-1 rounded-full transition-all ${s === step ? "w-8 bg-accent" : s < step ? "w-4 bg-accent/50" : "w-4 bg-white/10"
+                                className={`h-1.5 rounded-full transition-all ${s === step ? "w-10 bg-accent" : s < step ? "w-4 bg-accent/40" : "w-4 bg-border"
                                     }`}
                             />
                         ))}
@@ -85,11 +85,11 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                 className="space-y-6"
                             >
                                 <div>
-                                    <label className="block text-[10px] font-black text-white uppercase tracking-widest mb-2">
-                                        <Target className="w-3 h-3 inline mr-1.5" />
-                                        Primary Directive
+                                    <label className="block text-[0.65rem] font-black text-muted uppercase tracking-[0.3em] mb-3">
+                                        <Target className="w-4 h-4 inline mr-2 text-accent" />
+                                        PRIMARY DIRECTIVE
                                     </label>
-                                    <div className="grid grid-cols-2 gap-2">
+                                    <div className="grid grid-cols-2 gap-3">
                                         {[
                                             { value: "weight_loss", label: "Loss" },
                                             { value: "muscle_gain", label: "Gain" },
@@ -99,9 +99,9 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                             <button
                                                 key={goal.value}
                                                 onClick={() => setFormData({ ...formData, goal: goal.value })}
-                                                className={`p-3 rounded-xl border font-black uppercase tracking-widest text-[10px] transition-all ${formData.goal === goal.value
-                                                    ? "bg-accent/20 border-accent/40 text-accent"
-                                                    : "bg-white/5 border-white/10 text-muted hover:border-accent/20"
+                                                className={`p-4 rounded-xl border font-black uppercase tracking-widest text-xs transition-all ${formData.goal === goal.value
+                                                    ? "bg-text text-bg border-text shadow-lg"
+                                                    : "bg-card/40 border-border text-muted hover:border-accent/30"
                                                     }`}
                                             >
                                                 {goal.label}
@@ -111,18 +111,18 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-black text-white uppercase tracking-widest mb-2">
-                                        <Calendar className="w-3 h-3 inline mr-1.5" />
-                                        Temporal Window
+                                    <label className="block text-[0.65rem] font-black text-muted uppercase tracking-[0.3em] mb-3">
+                                        <Calendar className="w-4 h-4 inline mr-2 text-accent" />
+                                        TEMPORAL WINDOW
                                     </label>
-                                    <div className="grid grid-cols-3 gap-2">
+                                    <div className="grid grid-cols-3 gap-3">
                                         {[4, 8, 12].map((weeks) => (
                                             <button
                                                 key={weeks}
                                                 onClick={() => setFormData({ ...formData, duration: weeks })}
-                                                className={`p-3 rounded-xl border font-black uppercase tracking-widest text-[10px] transition-all ${formData.duration === weeks
-                                                    ? "bg-accent/20 border-accent/40 text-accent"
-                                                    : "bg-white/5 border-white/10 text-muted hover:border-accent/20"
+                                                className={`p-4 rounded-xl border font-black uppercase tracking-widest text-xs transition-all ${formData.duration === weeks
+                                                    ? "bg-text text-bg border-text shadow-lg"
+                                                    : "bg-card/40 border-border text-muted hover:border-accent/30"
                                                     }`}
                                             >
                                                 {weeks} Weeks
@@ -220,11 +220,11 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                 className="space-y-6"
                             >
                                 <div>
-                                    <label className="block text-[10px] font-black text-white uppercase tracking-widest mb-2">
-                                        <Utensils className="w-3 h-3 inline mr-1.5" />
-                                        Fuel Type
+                                    <label className="block text-[0.65rem] font-black text-muted uppercase tracking-[0.3em] mb-3">
+                                        <Utensils className="w-4 h-4 inline mr-2 text-accent" />
+                                        FUEL TYPE
                                     </label>
-                                    <div className="grid grid-cols-2 gap-2">
+                                    <div className="grid grid-cols-2 gap-3">
                                         {[
                                             { value: "balanced", label: "Balanced" },
                                             { value: "high_protein", label: "Protein" },
@@ -238,9 +238,9 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                             <button
                                                 key={diet.value}
                                                 onClick={() => setFormData({ ...formData, dietaryPreference: diet.value })}
-                                                className={`p-3 rounded-xl border font-black uppercase tracking-widest text-[10px] transition-all ${formData.dietaryPreference === diet.value
-                                                    ? "bg-accent/20 border-accent/40 text-accent"
-                                                    : "bg-white/5 border-white/10 text-muted hover:border-accent/20"
+                                                className={`p-4 rounded-xl border font-black uppercase tracking-widest text-xs transition-all ${formData.dietaryPreference === diet.value
+                                                    ? "bg-text text-bg border-text shadow-lg"
+                                                    : "bg-card/40 border-border text-muted hover:border-accent/30"
                                                     }`}
                                             >
                                                 {diet.label}
@@ -250,23 +250,23 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                 </div>
 
                                 {/* Summary */}
-                                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                                    <p className="text-xs font-black text-muted uppercase tracking-widest mb-3">Plan Summary</p>
-                                    <div className="space-y-2 text-sm">
-                                        <p className="text-white font-bold">
-                                            <span className="text-muted">Goal:</span> {formData.goal.replace("_", " ")}
+                                <div className="p-6 bg-card/40 rounded-2xl border border-border">
+                                    <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.3em] mb-4 opacity-60">PLAN SUMMARY</p>
+                                    <div className="space-y-3 text-sm">
+                                        <p className="text-text font-bold uppercase tracking-tight italic">
+                                            <span className="text-muted mr-2 not-italic font-black text-[0.6rem] tracking-widest opacity-60">GOAL:</span> {formData.goal.replace("_", " ")}
                                         </p>
-                                        <p className="text-white font-bold">
-                                            <span className="text-muted">Duration:</span> {formData.duration} weeks
+                                        <p className="text-text font-bold uppercase tracking-tight italic">
+                                            <span className="text-muted mr-2 not-italic font-black text-[0.6rem] tracking-widest opacity-60">WINDOW:</span> {formData.duration} weeks
                                         </p>
-                                        <p className="text-white font-bold">
-                                            <span className="text-muted">Training:</span> {formData.daysPerWeek} days/week
+                                        <p className="text-text font-bold uppercase tracking-tight italic">
+                                            <span className="text-muted mr-2 not-italic font-black text-[0.6rem] tracking-widest opacity-60">SESSIONS:</span> {formData.daysPerWeek} days/week
                                         </p>
-                                        <p className="text-white font-bold">
-                                            <span className="text-muted">Level:</span> {formData.experience}
+                                        <p className="text-text font-bold uppercase tracking-tight italic">
+                                            <span className="text-muted mr-2 not-italic font-black text-[0.6rem] tracking-widest opacity-60">STATUS:</span> {formData.experience}
                                         </p>
-                                        <p className="text-white font-bold">
-                                            <span className="text-muted">Diet:</span> {formData.dietaryPreference.replace("_", " ")}
+                                        <p className="text-text font-bold uppercase tracking-tight italic">
+                                            <span className="text-muted mr-2 not-italic font-black text-[0.6rem] tracking-widest opacity-60">DIET:</span> {formData.dietaryPreference.replace("_", " ")}
                                         </p>
                                     </div>
                                 </div>
@@ -338,15 +338,15 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-black text-white uppercase tracking-widest mb-2">
-                                        <Flame className="w-3 h-3 inline mr-1.5" />
-                                        Caloric Load
+                                    <label className="block text-[0.65rem] font-black text-muted uppercase tracking-[0.3em] mb-3">
+                                        <Flame className="w-4 h-4 inline mr-2 text-accent" />
+                                        CALORIC LOAD
                                     </label>
                                     <input
                                         type="number"
                                         value={formData.dailyCalories}
                                         onChange={(e) => setFormData({ ...formData, dailyCalories: parseInt(e.target.value) || 2000 })}
-                                        className="w-full p-3 bg-white/5 border border-white/10 rounded-xl text-white font-black text-[11px] focus:border-accent/40 focus:outline-none transition-all"
+                                        className="w-full p-4 bg-card/40 border border-border rounded-xl text-text font-black text-sm focus:border-accent/40 focus:outline-none transition-all uppercase placeholder:opacity-20"
                                         placeholder="2000"
                                         min="1200"
                                         max="5000"
@@ -404,11 +404,11 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                     </div>
 
                     {/* Navigation buttons */}
-                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10 shrink-0">
+                    <div className="flex items-center justify-between mt-8 pt-6 border-t border-border shrink-0">
                         {step > 1 ? (
                             <button
                                 onClick={() => setStep(step - 1)}
-                                className="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white font-black uppercase tracking-widest text-[9px] rounded-lg transition-all"
+                                className="px-6 py-3 bg-card/40 hover:bg-card/60 text-muted hover:text-text font-black uppercase tracking-widest text-[0.65rem] rounded-xl border border-border transition-all"
                             >
                                 Previous
                             </button>
@@ -419,17 +419,17 @@ export default function PlanGenerationModal({ isOpen, onClose, onGenerate, userP
                         {step < 4 ? (
                             <button
                                 onClick={() => setStep(step + 1)}
-                                className="px-6 py-2.5 bg-accent hover:bg-accent/90 text-zinc-950 font-black uppercase tracking-widest text-[9px] rounded-lg transition-all flex items-center gap-1.5"
+                                className="px-8 py-3 bg-text text-bg hover:bg-accent hover:text-bg font-black uppercase tracking-widest text-[0.65rem] rounded-xl transition-all flex items-center gap-2 shadow-lg"
                             >
                                 Continue
-                                <Zap className="w-3.5 h-3.5" />
+                                <Zap className="w-4 h-4" />
                             </button>
                         ) : (
                             <button
                                 onClick={handleGenerate}
-                                className="px-6 py-2.5 bg-accent hover:bg-accent/90 text-zinc-950 font-black uppercase tracking-widest text-[9px] rounded-lg transition-all flex items-center gap-1.5"
+                                className="px-8 py-3 bg-accent text-bg hover:shadow-cyan-500/20 font-black uppercase tracking-widest text-[0.65rem] rounded-xl transition-all flex items-center gap-2 shadow-xl italic"
                             >
-                                <Sparkles className="w-3.5 h-3.5" />
+                                <Sparkles className="w-4 h-4" />
                                 Initiate Engine
                             </button>
                         )}

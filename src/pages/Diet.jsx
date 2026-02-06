@@ -96,8 +96,8 @@ export default function Diet() {
     <DashboardLayout>
       <PageTransition>
         <div className="max-w-7xl mx-auto space-y-4 pb-20 px-2 sm:px-4">
-          <Link to="/dashboard" className="inline-flex items-center gap-2 text-[10px] font-black text-muted hover:text-accent transition-colors group uppercase tracking-widest">
-            <ChevronLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+          <Link to="/dashboard" className="inline-flex items-center gap-2 text-[0.65rem] font-black text-muted hover:text-accent transition-colors group uppercase tracking-[0.2em] opacity-60">
+            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Hub
           </Link>
 
@@ -106,25 +106,25 @@ export default function Diet() {
             <div className="flex items-center gap-3">
               <div className="w-1 h-6 bg-blue-500 rounded-full mb-0.5" />
               <div>
-                <h1 className="text-lg md:text-2xl font-black text-white italic tracking-tighter uppercase">Nutrition</h1>
-                <p className="text-[7px] text-muted font-bold uppercase tracking-[0.3em] uppercase">AI Sync & Engine</p>
+                <h1 className="text-xl md:text-2xl font-black text-text italic tracking-tighter uppercase leading-none">Nutrition</h1>
+                <p className="text-[0.6rem] text-muted font-bold uppercase tracking-[0.4em] mt-1.5 opacity-60">AI SYNC & ENGINE</p>
               </div>
             </div>
 
             {/* Tab Switcher */}
-            <div className="flex p-0.5 bg-white/5 rounded-xl border border-white/5 w-full md:w-auto self-stretch md:self-auto">
+            <div className="flex p-1 bg-card/40 rounded-xl border border-border w-full md:w-auto self-stretch md:self-auto shadow-sm">
               <button
                 onClick={() => setActiveTab("ai")}
-                className={`flex-1 md:flex-none px-4 sm:px-6 py-1.5 rounded-lg font-black uppercase tracking-tighter text-[9px] transition-all flex items-center justify-center gap-2 ${activeTab === 'ai' ? 'bg-white text-black shadow-md' : 'text-muted hover:text-white'}`}
+                className={`flex-1 md:flex-none px-6 py-2 rounded-lg font-black uppercase tracking-tight text-xs transition-all flex items-center justify-center gap-2 ${activeTab === 'ai' ? 'bg-text text-bg shadow-md' : 'text-muted hover:text-text'}`}
               >
-                <Sparkles className="w-3 h-3" />
+                <Sparkles className="w-4 h-4" />
                 AI
               </button>
               <button
                 onClick={() => setActiveTab("manual")}
-                className={`flex-1 md:flex-none px-4 sm:px-6 py-1.5 rounded-lg font-black uppercase tracking-tighter text-[9px] transition-all flex items-center justify-center gap-2 ${activeTab === 'manual' ? 'bg-white text-black shadow-md' : 'text-muted hover:text-white'}`}
+                className={`flex-1 md:flex-none px-6 py-2 rounded-lg font-black uppercase tracking-tight text-xs transition-all flex items-center justify-center gap-2 ${activeTab === 'manual' ? 'bg-text text-bg shadow-md' : 'text-muted hover:text-text'}`}
               >
-                <Plus className="w-3 h-3" />
+                <Plus className="w-4 h-4" />
                 Manual
               </button>
             </div>
@@ -140,51 +140,51 @@ export default function Diet() {
                 className="space-y-6"
               >
                 {/* AI Generation Interface */}
-                <div className="card-premium p-3 rounded-xl border border-white/5 bg-white/[0.02]">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <div className="space-y-2">
-                      <p className="text-[9px] font-black text-muted uppercase tracking-widest px-2">Preference</p>
+                <div className="card-premium p-6 md:p-8 rounded-2xl border border-border bg-card/40 shadow-xl">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="space-y-3">
+                      <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.2em] px-1 opacity-60">Preference</p>
                       <select
                         value={dietPreference}
                         onChange={(e) => setDietPreference(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg py-1.5 px-3 text-white font-black text-[9px] uppercase outline-none"
+                        className="w-full bg-card/60 border border-border rounded-xl py-3 px-4 text-text font-black text-xs uppercase outline-none focus:border-accent/40 shadow-sm"
                       >
                         {PREFERENCE_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                       </select>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-[9px] font-black text-muted uppercase tracking-widest px-2">Focus / Aim</p>
+                    <div className="space-y-3">
+                      <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.2em] px-1 opacity-60">Focus / Aim</p>
                       <select
                         value={dietAim}
                         onChange={(e) => setDietAim(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg py-1.5 px-3 text-white font-black text-[9px] uppercase outline-none"
+                        className="w-full bg-card/60 border border-border rounded-xl py-3 px-4 text-text font-black text-xs uppercase outline-none focus:border-accent/40 shadow-sm"
                       >
                         {AIM_OPTIONS.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                       </select>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-[9px] font-black text-muted uppercase tracking-widest px-2">Target Kcal</p>
+                    <div className="space-y-3">
+                      <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.2em] px-1 opacity-60">Target Kcal</p>
                       <input
                         type="number"
                         value={targetCalories || ""}
                         onChange={(e) => setTargetCalories(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 px-3 text-white font-black text-[10px] outline-none focus:border-accent/40"
+                        className="w-full bg-card/60 border border-border rounded-xl py-3 px-4 text-text font-black text-xs outline-none focus:border-accent/40 shadow-sm"
                       />
                     </div>
-                    <div className="flex flex-col gap-2 justify-end">
+                    <div className="flex flex-col gap-3 justify-end">
                       <button
                         onClick={handleGenerateValues}
                         disabled={loading}
-                        className="w-full py-2.5 rounded-lg bg-white text-zinc-950 font-black uppercase text-[9px] tracking-widest shadow-md hover:bg-accent transition-all active:scale-95 flex items-center justify-center gap-2"
+                        className="w-full py-3 rounded-xl bg-text text-bg font-black uppercase text-xs tracking-widest shadow-xl hover:bg-accent transition-all active:scale-95 flex items-center justify-center gap-2"
                       >
-                        {loading ? <div className="w-3 h-3 border-2 border-zinc-950/20 border-t-zinc-950 rounded-full animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                        {loading ? <div className="w-4 h-4 border-2 border-bg/20 border-t-bg rounded-full animate-spin" /> : <Sparkles className="w-4 h-4" />}
                         SYNC DIET
                       </button>
                       <Link
                         to="/training-plan"
-                        className="w-full py-1.5 rounded-lg border border-dashed border-white/10 text-[7px] font-black text-muted hover:text-accent hover:border-accent/40 transition-all flex items-center justify-center gap-2 uppercase tracking-widest"
+                        className="w-full py-2 rounded-xl border border-dashed border-border text-[0.6rem] font-black text-muted hover:text-accent hover:border-accent/40 transition-all flex items-center justify-center gap-2 uppercase tracking-[0.2em] opacity-60"
                       >
-                        <Target className="w-3 h-3" />
+                        <Target className="w-3.5 h-3.5" />
                         4-Week Diet Sync
                       </Link>
                     </div>
@@ -192,28 +192,28 @@ export default function Diet() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="relative w-full sm:w-64">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+                  <div className="relative w-full sm:w-80">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted opacity-40" />
                     <input
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="FILTER AI PROTOCOLS..."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-[10px] font-black text-white outline-none focus:border-accent/40"
+                      className="w-full bg-card/40 border border-border rounded-xl py-3.5 pl-12 pr-4 text-xs font-black text-text outline-none focus:border-accent/40 shadow-sm placeholder:opacity-20"
                     />
                   </div>
                 </div>
 
                 {/* Active Summary Callout */}
-                <div className="flex flex-col xl:flex-row items-center justify-between p-3 bg-blue-500/10 border border-blue-500/20 rounded-xl gap-6">
-                  <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-                    <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center border border-blue-500/20">
-                      <Activity className="w-5 h-5 text-blue-400" />
+                <div className="flex flex-col xl:flex-row items-center justify-between p-5 bg-blue-500/5 border border-blue-500/10 rounded-2xl gap-8">
+                  <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                    <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center border border-blue-500/20">
+                      <Activity className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
-                      <p className="text-[7px] font-black text-muted uppercase tracking-[0.4em] mb-0.5">Energy Matrix</p>
-                      <div className="flex items-baseline gap-2 justify-center sm:justify-start">
-                        <h3 className="text-xl font-black text-white italic tracking-tighter leading-none">{totalCalories}</h3>
-                        <span className="text-[8px] font-black text-muted uppercase">Kcal Sync</span>
+                      <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.4em] mb-1.5 opacity-60">ENERGY MATRIX</p>
+                      <div className="flex items-baseline gap-2.5 justify-center sm:justify-start">
+                        <h3 className="text-2xl font-black text-text italic tracking-tighter leading-none">{totalCalories}</h3>
+                        <span className="text-[0.65rem] font-black text-muted uppercase tracking-widest opacity-60">KCAL SYNC</span>
                       </div>
                     </div>
                   </div>
@@ -234,20 +234,22 @@ export default function Diet() {
               >
                 {/* Manual Utility Header */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="relative w-full sm:w-64">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+                  <div className="relative w-full sm:w-80">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted opacity-40" />
                     <input
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="SEARCH NUTRITION DATABASE..."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-[10px] font-black text-white outline-none focus:border-accent/40"
+                      className="w-full bg-card/40 border border-border rounded-xl py-3.5 pl-12 pr-4 text-xs font-black text-text outline-none focus:border-accent/40 shadow-sm placeholder:opacity-20"
                     />
                   </div>
-                  <div className="flex gap-2 w-full sm:w-auto">
-                    <button className="p-2.5 bg-white/5 border border-white/5 rounded-xl text-muted hover:text-white transition-all"><Filter className="w-4 h-4" /></button>
+                  <div className="flex gap-3 w-full sm:w-auto">
+                    <button className="p-3.5 bg-card/40 border border-border rounded-xl text-muted hover:text-text transition-all shadow-sm">
+                      <Filter className="w-5 h-5" />
+                    </button>
                     <button
                       onClick={() => setShowAddModal(true)}
-                      className="flex-1 sm:flex-none px-6 py-2 bg-blue-500 text-white rounded-lg font-black text-[9px] uppercase tracking-widest shadow-md hover:scale-105 active:scale-95 transition-all"
+                      className="flex-1 sm:flex-none px-8 py-2.5 bg-blue-500 text-white rounded-xl font-black text-xs uppercase tracking-widest shadow-xl hover:scale-105 active:scale-95 transition-all shadow-blue-500/10"
                     >
                       Add Meal
                     </button>
@@ -274,8 +276,8 @@ export default function Diet() {
               </motion.div>
             ))}
             {meals.length === 0 && (
-              <div className="col-span-full py-20 text-center border-2 border-dashed border-white/5 rounded-3xl">
-                <p className="text-[10px] font-black text-muted uppercase tracking-[0.5em]">
+              <div className="col-span-full py-32 text-center border-2 border-dashed border-border rounded-[2rem] bg-card/10">
+                <p className="text-xs font-black text-muted uppercase tracking-[0.5em] opacity-40 px-10">
                   {activeTab === 'ai' ? 'No AI Protocols Active' : 'No Manual Meals Documented'}
                 </p>
               </div>
@@ -299,12 +301,12 @@ export default function Diet() {
 
 function MacroMini({ icon, label, value }) {
   return (
-    <div className="flex flex-col items-center gap-0.5 min-w-[45px]">
-      <div className="w-7 h-7 bg-white/5 rounded-lg flex items-center justify-center border border-white/5">
+    <div className="flex flex-col items-center gap-1.5 min-w-[60px]">
+      <div className="w-9 h-9 bg-card/60 rounded-xl flex items-center justify-center border border-border shadow-sm">
         {icon}
       </div>
-      <p className="text-[6px] font-black text-muted tracking-widest leading-none">{label}</p>
-      <p className="text-[9px] font-black text-white italic tabular-nums">{value}</p>
+      <p className="text-[0.6rem] font-black text-muted tracking-widest leading-none opacity-60">{label}</p>
+      <p className="text-xs font-black text-text italic tabular-nums">{value}</p>
     </div>
   );
 }

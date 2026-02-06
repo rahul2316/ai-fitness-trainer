@@ -80,7 +80,7 @@ export default function AddFoodModal({ onClose }) {
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-card border border-white/5 w-full max-w-7xl rounded-xl shadow-2xl relative overflow-hidden flex flex-col xl:flex-row h-[95vh] md:h-auto md:max-h-[90vh]"
+        className="bg-card border border-border w-full max-w-7xl rounded-2xl shadow-2xl relative overflow-hidden flex flex-col xl:flex-row h-[95vh] md:h-auto md:max-h-[90vh]"
       >
         {/* Left Panel: Food Browser */}
         <div className="w-full xl:w-[320px] border-b xl:border-b-0 xl:border-r border-white/5 p-4 md:p-6 flex flex-col bg-black/40 relative overflow-hidden h-1/2 xl:h-full">
@@ -88,11 +88,11 @@ export default function AddFoodModal({ onClose }) {
             <Apple className="w-64 h-64 text-accent" />
           </div>
 
-          <div className="mb-4 relative z-10">
-            <h2 className="text-xl font-black text-white italic uppercase tracking-tighter mb-1 leading-none">Library</h2>
-            <div className="flex items-center gap-2 text-accent text-[8px] font-black uppercase tracking-[0.3em]">
-              <div className="w-2 h-0.5 bg-accent"></div>
-              Log Custom Nutrition
+          <div className="mb-6 relative z-10">
+            <h2 className="text-2xl font-black text-text italic uppercase tracking-tighter mb-1.5 leading-none">Library</h2>
+            <div className="flex items-center gap-2 text-accent text-[0.6rem] font-black uppercase tracking-[0.3em] opacity-80">
+              <div className="w-4 h-0.5 bg-accent"></div>
+              LOG CUSTOM NUTRITION
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export default function AddFoodModal({ onClose }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search food..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 outline-none focus:border-accent/40 text-[11px] font-black uppercase tracking-tight transition-all"
+                className="w-full bg-card/40 border border-border rounded-xl py-3 pl-11 pr-4 outline-none focus:border-accent/50 text-sm font-bold uppercase tracking-tight transition-all"
               />
             </div>
             <div className="flex gap-2 overflow-x-auto scrollbar-none pb-2">
@@ -111,7 +111,7 @@ export default function AddFoodModal({ onClose }) {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-[8px] font-black uppercase tracking-widest transition-all border ${selectedCategory === cat ? 'bg-white text-black border-white' : 'bg-white/5 text-muted border-white/5'}`}
+                  className={`px-5 py-2.5 rounded-xl text-[0.65rem] font-black uppercase tracking-widest transition-all border ${selectedCategory === cat ? 'bg-text text-bg border-text shadow-lg' : 'bg-card/40 text-muted border-border hover:border-accent/30'}`}
                 >
                   {cat}
                 </button>
@@ -121,24 +121,26 @@ export default function AddFoodModal({ onClose }) {
 
           <div className="flex-grow overflow-y-auto scrollbar-none space-y-2 relative z-10">
             {filteredFood.map(item => (
-              <div key={item.id} className="w-full flex items-center justify-between p-2.5 bg-white/5 rounded-xl border border-white/5 hover:border-accent/30 transition-all group">
+              <div key={item.id} className="w-full flex items-center justify-between p-3 bg-card/40 rounded-xl border border-border hover:border-accent/40 transition-all group">
                 <div className="text-left min-w-0">
-                  <p className="font-black text-white text-[10px] uppercase italic tracking-tighter truncate">{item.name}</p>
-                  <p className="text-[6px] font-black text-muted uppercase tracking-[0.2em] mt-0.5">{item.calories} KCAL • {item.protein || item.protein_g}P</p>
+                  <p className="font-black text-text text-xs uppercase italic tracking-tighter truncate leading-tight">{item.name}</p>
+                  <p className="text-[0.6rem] font-black text-muted uppercase tracking-[0.2em] mt-1.5 opacity-60 tabular-nums">
+                    {item.calories} KCAL • {item.protein || item.protein_g}P
+                  </p>
                 </div>
-                <div className="flex items-center gap-1.5 shrink-0">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     onClick={() => setDetailFood(item)}
-                    className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 hover:bg-white/10"
+                    className="w-7 h-7 rounded-lg bg-card/40 flex items-center justify-center border border-border hover:bg-card/60"
                   >
-                    <Info className="w-3 h-3 text-muted" />
+                    <Info className="w-4 h-4 text-muted" />
                   </button>
                   <button
                     onClick={() => addItem(item)}
                     disabled={selectedItems.some(i => i.id === item.id)}
-                    className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center border border-white/5 hover:bg-accent hover:text-black transition-all disabled:opacity-20"
+                    className="w-7 h-7 rounded-lg bg-card/40 flex items-center justify-center border border-border hover:bg-accent hover:text-bg transition-all disabled:opacity-20"
                   >
-                    <Plus className="w-3 h-3" />
+                    <Plus className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -162,7 +164,7 @@ export default function AddFoodModal({ onClose }) {
                 value={mealName}
                 onChange={(e) => setMealName(e.target.value)}
                 placeholder="NAME..."
-                className="bg-transparent border-b border-white/10 focus:border-accent text-xl font-black text-white uppercase tracking-tighter outline-none w-full pb-1.5 transition-all italic"
+                className="bg-transparent border-b border-border focus:border-accent text-3xl font-black text-text uppercase tracking-tighter outline-none w-full pb-3 transition-all italic"
               />
             </div>
             <div className="flex items-center gap-2 shrink-0">
@@ -176,8 +178,8 @@ export default function AddFoodModal({ onClose }) {
                 <option>Dinner</option>
                 <option>Snack</option>
               </select>
-              <button onClick={onClose} className="p-2 bg-white/5 text-muted hover:text-white rounded-lg border border-white/5">
-                <X className="w-4 h-4" />
+              <button onClick={onClose} className="p-2.5 bg-card/40 text-muted hover:text-text rounded-xl border border-border">
+                <X className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -263,8 +265,8 @@ export default function AddFoodModal({ onClose }) {
 function StatMini({ label, value, unit, color }) {
   return (
     <div>
-      <p className="text-[6px] font-black text-muted uppercase tracking-widest mb-0.5">{label}</p>
-      <p className={`text-lg font-black italic tracking-tighter ${color}`}>{value}<span className="text-[7px] ml-0.5 opacity-50">{unit}</span></p>
+      <p className="text-[0.6rem] font-black text-muted uppercase tracking-[0.2em] mb-1.5 opacity-60 tabular-nums">{label}</p>
+      <p className={`text-2xl font-black italic tracking-tighter ${color}`}>{value}<span className="text-[0.65rem] ml-1 opacity-50 uppercase">{unit}</span></p>
     </div>
   );
 }

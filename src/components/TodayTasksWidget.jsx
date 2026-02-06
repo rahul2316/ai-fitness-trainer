@@ -42,13 +42,13 @@ export default function TodayTasksWidget({ todayTasks, onQuickComplete }) {
                         <h3 className="text-sm font-black text-white uppercase italic tracking-tight">
                             Daily Missions
                         </h3>
-                        <p className="text-[9px] text-muted font-bold uppercase tracking-widest mt-0.5">
+                        <p className="text-[0.65rem] text-muted font-bold uppercase tracking-widest mt-1 opacity-70">
                             {dayOfWeek}
                         </p>
                     </div>
                     <div className="text-right">
                         <p className="text-xl font-black text-white italic tracking-tighter leading-none">{completionPercentage}%</p>
-                        <p className="text-[8px] text-muted font-black uppercase tracking-widest mt-0.5">Sync</p>
+                        <p className="font-mono text-[0.6rem] text-muted font-black uppercase tracking-widest mt-1.5">Sync</p>
                     </div>
                 </div>
 
@@ -105,8 +105,8 @@ export default function TodayTasksWidget({ todayTasks, onQuickComplete }) {
                     to="/training-plan"
                     className="flex items-center justify-between p-2 bg-white/5 hover:bg-white/10 rounded-lg border border-white/5 transition-all group/link"
                 >
-                    <span className="text-[10px] font-black text-white uppercase italic tracking-widest px-1">
-                        Full Trajectory
+                    <span className="text-[0.65rem] font-black text-text uppercase italic tracking-[0.15em] px-1 group-hover/link:text-accent transition-colors">
+                        FULL TRAJECTORY
                     </span>
                     <ChevronRight className="w-3.5 h-3.5 text-muted group-hover/link:text-accent group-hover/link:translate-x-1 transition-all" />
                 </Link>
@@ -154,11 +154,11 @@ function QuickTask({ icon, title, subtitle, info, completed, onToggle, color = "
                 <p className={`text-[11px] font-black text-white uppercase italic tracking-tight ${completed ? 'line-through opacity-50' : ''} truncate`}>
                     {title}
                 </p>
-                <p className="text-[7px] text-muted font-black uppercase tracking-widest truncate">
+                <p className="text-[0.65rem] text-muted font-medium uppercase tracking-widest truncate opacity-70">
                     {subtitle}
                 </p>
                 {info && (
-                    <p className={`text-[8px] text-accent/80 font-black uppercase italic tracking-widest mt-0.5 truncate`}>
+                    <p className={`text-[0.6rem] text-accent/80 font-black uppercase italic tracking-widest mt-1 truncate`}>
                         {info}
                     </p>
                 )}

@@ -31,11 +31,11 @@ export default function WeeklyCalendar({ weekData, onDayClick, currentDay }) {
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.05 }}
                         onClick={() => onDayClick(dayData)}
-                        className={`p-3.5 rounded-xl border transition-all group relative overflow-hidden ${isToday
-                            ? 'bg-accent/10 border-accent/40 shadow-lg shadow-accent/10'
+                        className={`p-6 rounded-[1.5rem] border transition-all group relative overflow-hidden flex flex-col items-center justify-center text-center shadow-lg active:scale-95 ${isToday
+                            ? 'bg-accent border-accent text-bg shadow-accent/20'
                             : isCompleted
                                 ? 'bg-emerald-500/10 border-emerald-500/30'
-                                : 'bg-white/5 border-white/5 hover:border-accent/20'
+                                : 'bg-card/40 border-border hover:border-accent/40'
                             }`}
                     >
                         {/* Background icon */}
@@ -49,49 +49,53 @@ export default function WeeklyCalendar({ weekData, onDayClick, currentDay }) {
 
                         <div className="relative z-10 text-left">
                             {/* Day name */}
-                            <div className="flex items-center justify-between mb-2">
-                                <h4 className="text-[10px] font-black text-white uppercase italic tracking-tight">
+                            {/* Day name */}
+                            <div className="flex flex-col items-center gap-2 mb-4">
+                                <h4 className={`text-[0.65rem] font-black uppercase italic tracking-[0.3em] ${isToday ? 'text-bg' : 'text-text opacity-70'}`}>
                                     {dayName.substring(0, 3)}
                                 </h4>
                                 {isCompleted && (
-                                    <div className="w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
-                                        <Check className="w-3.5 h-3.5 text-black" />
+                                    <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center shadow-sm">
+                                        <Check className="w-4 h-4 text-bg" />
                                     </div>
                                 )}
                                 {!isCompleted && !isToday && (
-                                    <Circle className="w-5 h-5 text-muted" />
+                                    <Circle className="w-6 h-6 text-muted/30" />
                                 )}
                                 {isToday && !isCompleted && (
-                                    <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                                    <div className="w-2.5 h-2.5 bg-bg rounded-full animate-pulse" />
                                 )}
                             </div>
 
                             {/* Workout name or rest */}
+                            {/* Workout name or rest */}
                             {isRestDay ? (
-                                <p className="text-[9px] font-black text-blue-400 uppercase tracking-widest mb-1.5 opacity-80">
-                                    Rest Cycle
+                                <p className={`text-[0.55rem] font-black uppercase tracking-[0.2em] mb-2 ${isToday ? 'text-bg/80' : 'text-blue-400/80'}`}>
+                                    REST
                                 </p>
                             ) : (
-                                <p className="text-[9px] font-black text-white uppercase tracking-tight mb-1.5 line-clamp-1 opacity-90 italic">
-                                    {dayData.workout?.name || "Ready"}
+                                <p className={`text-[0.6rem] font-black uppercase tracking-widest mb-2 line-clamp-1 italic ${isToday ? 'text-bg' : 'text-text'}`}>
+                                    {dayData.workout?.name?.split(' ')[0] || "READY"}
                                 </p>
                             )}
 
                             {/* Progress bar */}
-                            <div className="h-1 bg-white/5 rounded-full overflow-hidden mb-1.5">
+                            <div className={`h-1 rounded-full overflow-hidden mb-2 ${isToday ? 'bg-bg/20' : 'bg-card/60'}`}>
                                 <motion.div
                                     initial={{ width: 0 }}
                                     animate={{ width: `${completionPercentage}%` }}
-                                    className={`h-full ${isCompleted
-                                        ? 'bg-emerald-500'
-                                        : 'bg-gradient-to-r from-accent to-emerald-400'
+                                    className={`h-full ${isToday
+                                        ? 'bg-bg'
+                                        : isCompleted
+                                            ? 'bg-emerald-500'
+                                            : 'bg-accent'
                                         }`}
                                     transition={{ duration: 0.5, delay: index * 0.05 }}
                                 />
                             </div>
 
                             {/* Completion percentage */}
-                            <p className="text-[8px] font-black text-muted uppercase tracking-[0.2em]">
+                            <p className={`text-[0.55rem] font-black uppercase tracking-[0.2em] ${isToday ? 'text-bg/60' : 'text-muted/60'}`}>
                                 {completionPercentage}%
                             </p>
                         </div>

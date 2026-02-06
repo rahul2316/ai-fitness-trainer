@@ -119,8 +119,8 @@ export default function Workouts() {
     <DashboardLayout>
       <PageTransition>
         <div className="max-w-7xl mx-auto space-y-4 pb-20 px-2 sm:px-4">
-          <Link to="/dashboard" className="inline-flex items-center gap-2 text-[10px] font-black text-muted hover:text-accent transition-colors group uppercase tracking-widest">
-            <ChevronLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+          <Link to="/dashboard" className="inline-flex items-center gap-2 text-[0.65rem] font-black text-muted hover:text-accent transition-colors group uppercase tracking-[0.2em] opacity-60">
+            <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Back to Hub
           </Link>
 
@@ -129,25 +129,25 @@ export default function Workouts() {
             <div className="flex items-center gap-3">
               <div className="w-1 h-6 bg-accent rounded-full mb-0.5" />
               <div>
-                <h1 className="text-lg md:text-2xl font-black text-white italic tracking-tighter uppercase">Workouts</h1>
-                <p className="text-[7px] text-muted font-bold uppercase tracking-[0.3em]">AI Synthesis & Manual</p>
+                <h1 className="text-xl md:text-2xl font-black text-text italic tracking-tighter uppercase leading-none">Workouts</h1>
+                <p className="text-[0.6rem] text-accent font-bold uppercase tracking-[0.4em] mt-1.5 opacity-60">AI SYNTHESIS & MANUAL</p>
               </div>
             </div>
 
             {/* Tab Switcher */}
-            <div className="flex p-0.5 bg-white/5 rounded-xl border border-white/5 w-full md:w-auto self-stretch md:self-auto">
+            <div className="flex p-1 bg-card/40 rounded-xl border border-border w-full md:w-auto self-stretch md:self-auto shadow-sm">
               <button
                 onClick={() => setActiveTab("ai")}
-                className={`flex-1 md:flex-none px-4 sm:px-6 py-1.5 rounded-lg font-black uppercase tracking-tighter text-[9px] transition-all flex items-center justify-center gap-2 ${activeTab === 'ai' ? 'bg-white text-black shadow-md' : 'text-muted hover:text-white'}`}
+                className={`flex-1 md:flex-none px-6 py-2 rounded-lg font-black uppercase tracking-tight text-xs transition-all flex items-center justify-center gap-2 ${activeTab === 'ai' ? 'bg-text text-bg shadow-md' : 'text-muted hover:text-text'}`}
               >
-                <Sparkles className="w-3 h-3" />
+                <Sparkles className="w-4 h-4" />
                 AI
               </button>
               <button
                 onClick={() => setActiveTab("manual")}
-                className={`flex-1 md:flex-none px-4 sm:px-6 py-1.5 rounded-lg font-black uppercase tracking-tighter text-[9px] transition-all flex items-center justify-center gap-2 ${activeTab === 'manual' ? 'bg-white text-black shadow-md' : 'text-muted hover:text-white'}`}
+                className={`flex-1 md:flex-none px-6 py-2 rounded-lg font-black uppercase tracking-tight text-xs transition-all flex items-center justify-center gap-2 ${activeTab === 'manual' ? 'bg-text text-bg shadow-md' : 'text-muted hover:text-text'}`}
               >
-                <Plus className="w-3 h-3" />
+                <Plus className="w-4 h-4" />
                 Manual
               </button>
             </div>
@@ -161,23 +161,23 @@ export default function Workouts() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="space-y-4"
               >
-                <div className="card-premium p-4 rounded-xl border border-white/5 bg-white/[0.02]">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                <div className="card-premium p-6 md:p-8 rounded-2xl border border-border bg-card/40 shadow-xl">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     {/* Muscle Target */}
                     <div className="lg:col-span-12 xl:col-span-8 space-y-4">
                       <div className="flex items-center justify-between px-1">
-                        <div className="flex items-center gap-2">
-                          <Dumbbell className="w-3.5 h-3.5 text-accent" />
-                          <h3 className="text-[9px] font-black text-white uppercase tracking-widest">Focus</h3>
+                        <div className="flex items-center gap-3">
+                          <Dumbbell className="w-4 h-4 text-accent" />
+                          <h3 className="text-[0.65rem] font-black text-text uppercase tracking-[0.2em] opacity-80">FOCUS AREAS</h3>
                         </div>
-                        <span className="text-[7px] font-bold text-muted uppercase">Selection</span>
+                        <span className="text-[0.6rem] font-bold text-muted uppercase tracking-widest opacity-60">Selection</span>
                       </div>
-                      <div className="flex flex-wrap gap-1 p-2.5 bg-black/20 rounded-xl border border-white/5 max-h-[120px] overflow-y-auto scrollbar-none">
+                      <div className="flex flex-wrap gap-2 p-4 bg-card/60 rounded-2xl border border-border max-h-[160px] overflow-y-auto scrollbar-none shadow-inner">
                         {MUSCLE_OPTIONS.map(m => (
                           <button
                             key={m}
                             onClick={() => toggleMuscle(m)}
-                            className={`px-2.5 py-1 rounded-lg text-[8px] font-black uppercase tracking-tighter transition-all border whitespace-nowrap active:scale-95 ${selectedMuscles.includes(m) ? 'bg-accent text-zinc-950 border-accent' : 'bg-white/5 text-muted border-white/10 hover:border-white/20'}`}
+                            className={`px-4 py-1.5 rounded-xl text-[0.6rem] font-black uppercase tracking-widest transition-all border whitespace-nowrap active:scale-95 ${selectedMuscles.includes(m) ? 'bg-text text-bg border-text shadow-lg' : 'bg-card/40 text-muted border-border hover:border-accent/30'}`}
                           >
                             {m}
                           </button>
@@ -187,32 +187,32 @@ export default function Workouts() {
 
                     {/* Parameters */}
                     <div className="lg:col-span-12 xl:col-span-4 grid grid-cols-2 gap-2">
-                      <div className="space-y-2">
-                        <p className="text-[9px] font-black text-muted uppercase tracking-widest px-2 flex items-center gap-2"><Clock className="w-3 h-3" />Time</p>
+                      <div className="space-y-3">
+                        <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.2em] px-1 opacity-60 flex items-center gap-2"><Clock className="w-3.5 h-3.5" />TIME</p>
                         <input
                           type="number"
                           value={duration || ""}
                           onChange={(e) => setDuration(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-lg py-1.5 px-3 text-white font-black text-[10px] outline-none"
+                          className="w-full bg-card/60 border border-border rounded-xl py-3 px-4 text-text font-black text-xs outline-none focus:border-accent/40 shadow-sm placeholder:opacity-20"
                         />
                       </div>
-                      <div className="space-y-2">
-                        <p className="text-[9px] font-black text-muted uppercase tracking-widest px-2 flex items-center gap-2"><Activity className="w-3 h-3" />Energy</p>
+                      <div className="space-y-3">
+                        <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.2em] px-1 opacity-60 flex items-center gap-2"><Activity className="w-3.5 h-3.5" />ENERGY</p>
                         <input
                           type="number"
                           value={calorieTarget || ""}
                           onChange={(e) => setCalorieTarget(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-lg py-1.5 px-3 text-white font-black text-[10px] outline-none"
+                          className="w-full bg-card/60 border border-border rounded-xl py-3 px-4 text-text font-black text-xs outline-none focus:border-accent/40 shadow-sm placeholder:opacity-20"
                         />
                       </div>
-                      <div className="col-span-2 space-y-2">
-                        <p className="text-[9px] font-black text-muted uppercase tracking-widest px-2">Base Location</p>
-                        <div className="grid grid-cols-2 gap-2">
+                      <div className="col-span-2 space-y-3">
+                        <p className="text-[0.65rem] font-black text-muted uppercase tracking-[0.2em] px-1 opacity-60">BASE LOCATION</p>
+                        <div className="grid grid-cols-2 gap-3">
                           {['gym', 'home'].map(loc => (
                             <button
                               key={loc}
                               onClick={() => setLocation(loc)}
-                              className={`py-1.5 rounded-lg font-black text-[9px] uppercase tracking-widest border transition-all active:scale-95 ${location === loc ? 'bg-white text-zinc-950 border-white' : 'bg-white/5 text-muted border-white/10'}`}
+                              className={`py-2.5 rounded-xl font-black text-xs uppercase tracking-widest border transition-all active:scale-95 shadow-sm ${location === loc ? 'bg-text text-bg border-text' : 'bg-card/40 text-muted border-border hover:border-accent/30'}`}
                             >
                               {loc}
                             </button>
@@ -246,19 +246,19 @@ export default function Workouts() {
 
                 {/* Active Summary Callout */}
                 {workouts.length > 0 && (
-                  <div className="flex flex-col sm:flex-row items-center justify-between p-3 bg-accent/10 border border-accent/20 rounded-xl gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-accent text-zinc-950 rounded-lg flex items-center justify-center shadow-lg shadow-accent/10">
-                        <Zap className="w-4 h-4" />
+                  <div className="flex flex-col sm:flex-row items-center justify-between p-4 bg-accent/5 border border-accent/10 rounded-2xl gap-4 shadow-lg shadow-accent/5">
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-accent text-bg rounded-xl flex items-center justify-center shadow-lg shadow-accent/10">
+                        <Zap className="w-5 h-5" />
                       </div>
                       <div>
-                        <h4 className="text-[9px] font-black text-white uppercase tracking-widest">Active Alpha</h4>
-                        <p className="text-[8px] text-accent font-bold uppercase truncate max-w-[150px]">{workouts[0].name}</p>
+                        <h4 className="text-[0.65rem] font-black text-text uppercase tracking-widest opacity-80">ACTIVE ALPHA</h4>
+                        <p className="text-[0.6rem] text-accent font-black uppercase truncate max-w-[200px] tracking-widest mt-1 italic">{workouts[0].name}</p>
                       </div>
                     </div>
                     <button
                       onClick={() => setSelectedWorkout(workouts[0])}
-                      className="w-full sm:w-auto px-4 py-1.5 bg-white text-zinc-950 rounded-lg font-black uppercase text-[8px] tracking-widest hover:bg-accent transition-all active:scale-95"
+                      className="w-full sm:w-auto px-6 py-2.5 bg-text text-bg rounded-xl font-black uppercase text-[0.65rem] tracking-widest hover:bg-accent hover:text-bg transition-all active:scale-95 shadow-lg"
                     >
                       Protocol
                     </button>
@@ -282,8 +282,8 @@ export default function Workouts() {
                     </motion.div>
                   ))}
                   {workouts.length === 0 && (
-                    <div className="col-span-full py-20 text-center border-2 border-dashed border-white/5 rounded-3xl">
-                      <p className="text-[10px] font-black text-muted uppercase tracking-[0.5em]">No AI Protocols for Today</p>
+                    <div className="col-span-full py-32 text-center border-2 border-dashed border-border rounded-[2rem] bg-card/10">
+                      <p className="text-xs font-black text-muted uppercase tracking-[0.5em] opacity-40 px-10">No AI Protocols for Today</p>
                     </div>
                   )}
                 </div>
@@ -298,20 +298,22 @@ export default function Workouts() {
               >
                 {/* Manual Utility Header */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="relative w-full sm:w-64">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+                  <div className="relative w-full sm:w-80">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted opacity-40" />
                     <input
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="SEARCH REPOSITORY..."
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-2.5 pl-10 pr-4 text-[10px] font-black text-white outline-none focus:border-accent/40"
+                      className="w-full bg-card/40 border border-border rounded-xl py-3.5 pl-12 pr-4 text-xs font-black text-text outline-none focus:border-accent/40 shadow-sm placeholder:opacity-20"
                     />
                   </div>
-                  <div className="flex gap-2 w-full sm:w-auto">
-                    <button className="p-2 bg-white/5 border border-white/5 rounded-lg text-muted hover:text-white transition-all"><Filter className="w-3.5 h-3.5" /></button>
+                  <div className="flex gap-3 w-full sm:w-auto">
+                    <button className="p-3.5 bg-card/40 border border-border rounded-xl text-muted hover:text-text transition-all shadow-sm">
+                      <Filter className="w-5 h-5" />
+                    </button>
                     <button
                       onClick={() => setShowAddModal(true)}
-                      className="flex-1 sm:flex-none px-6 py-2 bg-accent text-zinc-950 rounded-lg font-black text-[9px] uppercase tracking-widest shadow-md hover:scale-105 active:scale-95 transition-all"
+                      className="flex-1 sm:flex-none px-8 py-2.5 bg-accent text-zinc-950 rounded-xl font-black text-xs uppercase tracking-widest shadow-xl hover:scale-105 active:scale-95 transition-all shadow-accent/10"
                     >
                       Add Log
                     </button>
@@ -335,8 +337,8 @@ export default function Workouts() {
                     </motion.div>
                   ))}
                   {workouts.length === 0 && (
-                    <div className="col-span-full py-20 text-center border-2 border-dashed border-white/5 rounded-3xl">
-                      <p className="text-[10px] font-black text-muted uppercase tracking-[0.5em]">Repository Empty</p>
+                    <div className="col-span-full py-32 text-center border-2 border-dashed border-border rounded-[2rem] bg-card/10">
+                      <p className="text-xs font-black text-muted uppercase tracking-[0.5em] opacity-40 px-10">Repository Empty</p>
                     </div>
                   )}
                 </div>
