@@ -16,11 +16,11 @@ export default function Home() {
       <div className="orbital-glow bottom-0 right-0 translate-x-1/2 translate-y-1/2 opacity-20 bg-emerald-500/20"></div>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center px-4 pt-48 pb-32 lg:pt-64 lg:pb-48 relative overflow-hidden">
+      <section className="flex flex-col items-center justify-center text-center px-2 pt-10 pb-10 lg:pt-20 lg:pb-5 relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="inline-flex items-center gap-3 px-5 py-2 glass rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-12 border border-accent/20 animate-glow"
+          className="inline-flex items-center gap-3 px-5 py-2 glass rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-12 border border-accent/15 animate-glow"
         >
           <Cpu className="w-3.5 h-3.5 text-accent" />
           AI Fitness Sync Active
@@ -30,7 +30,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-6xl md:text-9xl font-extrabold max-w-6xl leading-[1.1] mb-10 tracking-tight text-white mb-10"
+          className="text-5xl md:text-8xl font-extrabold max-w-6xl leading-[1.1] mb-10 tracking-tight text-white mb-10"
         >
           Forge Your <span className="text-accent">Ideal</span> Body
         </motion.h1>
@@ -39,7 +39,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg md:text-2xl text-muted max-w-2xl mb-14 leading-relaxed font-bold uppercase tracking-tight"
+          className="text-2lg md:text-0xl text-muted max-w-2xl mb-14 leading-relaxed font-bold uppercase tracking-tight"
         >
           The most advanced AI fitness app for personal growth. Expertly crafted workout plans for everyone.
         </motion.p>
@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* Trust Continuum */}
       <section className="py-20 border-y border-white/5 bg-white/[0.01]">
-        <div className="max-w-7xl mx-auto px-6 overflow-hidden">
+        <div className="max-w-8xl mx-auto px-6 overflow-hidden">
           <motion.div
             animate={{ x: [0, -100, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
